@@ -1,38 +1,31 @@
-def general_arrival():
-    soldiers = int(input())
-    order = [int(x) for x in input().split()]
+def solve(n, heights):
 
-    max_num = max(order)
-    min_num = min(order)
-    LENGTH = len(order)
-    SWAPS = 0
-    min_index = 0
-    max_index = 0
+    maxVal = heights[0]
+    maxValIdx = 0
+    minVal = heights[n-1]
+    minValIdx = n-1
 
-    for i in range(len(order)):
-        if order[i] == min_num:
-            min_index = i
-        elif order[i] == max_num:
-            max_index = i
+    for i in range(0, n):
+        if heights[i] > maxVal:
+            maxVal = heights[i]
+            maxValIdx = i
 
-        else:
-            continue
-    if (max_index - 0) == 1 and (len(order)-1 - (min_num)) == 1:
-        print('IF EXECUTED')
-        SWAPS += max_index - 0
-        SWAPS += (len(order)-1) - (min_index)
+        if heights[i] <= minVal:
+            minVal = heights[i]
+            minValIdx = i
 
-    else:
-        print('ELSE EXECUTED')
-        SWAPS += max_index - 0
-        SWAPS += (len(order)-2) - (min_index)
+    swaps = maxValIdx
+    swaps += (n - 1) - minValIdx
 
-    return SWAPS
+    if maxValIdx > minValIdx:
+        swaps -= 1
+
+    return swaps
 
 
+if __name__ == "__main__":
 
-
-if __name__ == '__main__':
-    print(general_arrival())
-
+    n = int(input())
+    heights = [int(x) for x in input().split()]
+    print (solve(n, heights))
 
