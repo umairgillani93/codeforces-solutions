@@ -25,19 +25,57 @@ class NewYearChallenge:
     def __init__(self, probs, mins):
         self.probs = probs 
         self.mins = mins 
+        self.count = 0 
 
     def solve(self):
-        return 5 * (self.probs * (self.probs+1) // 2)
+        problems_time = []
+        for i in range(1, int(self.probs)+1):
+            problems_time.append(5 * (int(i) * (int(i)+1) // 2))
+
+        return problems_time
 
     def main(self):
-        if float(self.mins / 60) < 4.0:
-            return 'Limax can solve some problems!'
-        
-        return 'Limax cannot solve any problem, he has to reach'
+        time_left = 4.0 - float(self.mins / 60)
+        if time_left < 4.0:
+            if time_left < 1.0:
+                actual_time = 18 / float(time_left)
+                
+                print(actual_time)
+
+                for p in range(self.probs):
+                    for t in self.solve():
+                        if int(actual_time) > int(t):
+                            self.count += 1
+
+                        return self.count
+
+               
+
+
+            else:
+                hrs, mins = str(time_left).split('.')
+                print(f'hrs: {hrs} mins: {mins}')
+                hrs, mins = int(hrs), int(mins)
+
+                actual_time = (hrs * 180) + (18 / (mins / 10)) 
+
+                print(actual_time)
+
+
+                for p in range(self.probs):
+                    for t in self.solve():
+                        if actual_time > int(t):
+                            self.count += 1
+                            print(self.count)
+
+                        return self.count
+
+        else:
+            return "No problems solved!"
 
 
 if __name__ == '__main__':
     probs, mins = (int(x) for x in input().split())
     nyc = NewYearChallenge(probs, mins)
 
-    print(nyc.solve())
+    print(nyc.main())
