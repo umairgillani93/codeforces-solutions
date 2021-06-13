@@ -1,9 +1,4 @@
-i = 3
-ts = []
-for c in range(i):
-    t = 5 * ((i * (i+1)) / 2)
-    ts.append(t)
+l = '1 2 3 4'.split()
+l_string = '\n'.join(l)
 
-
-print(ts)
-    
+print(l_string)
