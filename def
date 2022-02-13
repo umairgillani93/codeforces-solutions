@@ -1,0 +1,55 @@
+#l1 = [3, 5, 6]
+#l2 = [3, 2, 3]
+#
+#final = list(zip(l1, l2))
+#
+#min_l1 = min(l1)
+#min_l2 = min(l2)
+#
+#cnt = 0
+#for i in range(len(final)):
+#    while True:
+#        if final[i][0] > min_l1 and final[i][1] > min_l2:
+#    	    final[i][0] -= 1
+#    	    cnt += 1
+#        elif final[i][0] > min_l1:
+#    	    final[i][0] -= 1
+#     	    cnt += 1
+#    	elif fina[i][1 > min_l2:
+#    	    final[i][1] -= 1
+#    	    cnt += 1
+#    	else:
+#    	    print('count: {}'.format(cnt))
+#	    break
+#
+#
+def main():
+  n = int(input())
+
+  for i in range(n):
+    sizes.append(int(input()))
+    arr1.append([int(x) for x in input.split()])
+    arr2.append([int(x) for x in input.split()])
+
+    min_arr1 = min(arr1[i])
+    min_arr2 = min(arr2[i])
+
+    count = 0 
+    for i in range(len(arr1[i])):
+      if arr1[i] > min_arr1 and arr2[i] > min_arr2:
+        count += max((arr1[i] - min(arr1), arr2[i] - min(arr2)))
+
+      elif arr1[i] > min_arr1:
+        count += arr1[i] - min_arr1
+
+      elif arr2[i] > min_arr2:
+        count += arr2[i] - min_arr2
+
+    print("count is: {}".format(count))
+
+if __name__ == "__main__":
+  main()
+
+
+
+  

@@ -1,0 +1,9 @@
+
+
+candies = [[1,2,3], [1,2,3]]
+oranges = [[2,3,4], [4,5,5]]
+
+for i in range(len(candies)):
+  for j in range(len(candies[i])):
+
+    print(candies[i][j])

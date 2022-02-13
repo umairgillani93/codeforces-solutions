@@ -6,12 +6,21 @@ class Username:
         self.amazings = 0
     def main(self):
         # check = self.scores[0]
-        for i in range(len(self.scores)-1):
-            if self.scores[i+1] > self.scores[i]:
-                self.amazings += 1
 
-            else:
-                continue                
+        if len(self.scores) == 2 and self.scores[1] < self.scores[0]:
+            self.amazings = 1
+
+        else:
+            
+            for i in range(len(self.scores)-1):
+                if len(self.scores[:i]) == 0:
+                    continue
+                elif self.scores[i+1] > max(self.scores[:i]):
+                    self.amazings += 1
+                elif self.scores[i+1] < min(self.scores[:i]):
+                    self.amazings += 1
+                else:
+                    continue                                
 
         print(self.amazings)
 

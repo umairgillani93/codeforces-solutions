@@ -1,4 +1,9 @@
-l = '1 2 3 4'.split()
-l_string = '\n'.join(l)
+def recurse(arr, num):
+  if num in arr:
+    return arr.index(num)
 
-print(l_string)
+  else:
+    return recurse(arr, num-1)
+
+
+print(recurse([1,2,2,7], 4))

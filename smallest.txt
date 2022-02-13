@@ -1,0 +1,17 @@
+
+# list of numbers 
+# loop through it
+# check for each item in list, if the difference b/w item and others is zero, continue otherwise
+# 
+
+# mylist = [3, 1, 2]
+
+for item in mylist:
+  a = item 
+  mylist = mylist other than 'a'
+  check each item difference with 'a'
+  
+  if difference is less than or equals 1
+  continue 
+  otherwise 
+  list are not same
