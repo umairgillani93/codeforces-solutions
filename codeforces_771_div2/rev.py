@@ -10,6 +10,10 @@ def main():
     if len(perm) == 1:
       print(" ".join([str(x) for x in perm]))
 
+    if perm[0] > perm[-1]:
+      perm[0], perm[-1] = perm[-1], perm[0]
+      print(" ".join([str(x) for x in perm]))
+
     else:
       for i in range(len(perm) -1):
         if perm[i] > perm[i+1]:

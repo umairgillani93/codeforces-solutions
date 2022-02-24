@@ -7,21 +7,19 @@ def main():
     arrays.append([int(x) for x in input().split()])
 
   for array in arrays:
-    while True:
-      c = False
-      for i in range(len(array) - 1):
-        if (array[i] > array[i+1]) and ((array[i] + array[i+1]) % 2 != 0):
-          array[i], array[i+1] = array[i+1], array[i]
-          c = True
-
-
-      if not c:
-        print('Yes')
-        break
-
+    for i in range(len(array) - 1):
+      if (array[i] > array[i+1]) and ((array[i] + array[i+1]) % 2 != 0):
+        array[i], array[i+1] = array[i+1], array[i]
+        
       else:
-        print('No')
-        break
+        continue
+
+    if array == sorted(array):
+      print('yes')
+
+    else:
+      print('no')
+
 
 if __name__ == '__main__':
   main()
