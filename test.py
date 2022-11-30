@@ -1,9 +1,6 @@
-def recurse(arr, num):
-  if num in arr:
-    return arr.index(num)
+import itertools
 
-  else:
-    return recurse(arr, num-1)
+combs = list(itertools.combinations(4, 2))
 
+print(combs)
 
-print(recurse([1,2,2,7], 4))
