@@ -1,4 +1,6 @@
 import os
+import sys
+import numpy as np
 import itertools
 
 def make_pairs(n):
@@ -12,35 +14,37 @@ def make_pairs(n):
     return vc
 
 def lcm(x, y):
-    smaller = 0
-    if x < y:
-        smaller = x
-    elif x > y:
-        smaller = y
+    lcm = 0
+    if x > y:
+        g = x
     else:
-        smaller = x
+        g = y
 
-    i = 1
-    while (i <= smaller):
-        if x % i == 0 and y % i == 0:
-            return i
+    while(True):
+        if (g % x == 0) and (g % y == 0):
+            lcm = g
+            break
         else:
-            i += 1
+            g += 1
+    return lcm
+
  
 if __name__ == '__main__':
-    n = int(input())
-    vector = []
-    for _ in range(n):
-        vector.append(int(input()))
+   n = int(input())
+   vector = []
+   for _ in range(n):
+       vector.append(int(input()))
 
-    for i in range(len(vector)):
-        pairs = make_pairs(vector[i])
-        for j in range(len(pairs)):
-            x, y = pairs[j]
-            val = lcm(x, y)
-            print(f'val: {val}')
-            if x < val and y < val:
-                print(x, y)
-            else:
-                continue
+   for i in range(len(vector)):
+       pairs = make_pairs(vector[i])
+       #print(pairs)
 
+       for j in range(len(pairs)):
+           x, y = pairs[j]
+           val = lcm(x, y)
+
+           if val < vector[i]:
+               if (x != 1) and (y != 1):
+                   print(x, y)
+           else:
+               continue
