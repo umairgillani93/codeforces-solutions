@@ -28,23 +28,24 @@ def lcm(x, y):
             g += 1
     return lcm
 
- 
-if __name__ == '__main__':
+def main(): 
    n = int(input())
    vector = []
    for _ in range(n):
        vector.append(int(input()))
 
+
    for i in range(len(vector)):
        pairs = make_pairs(vector[i])
-       #print(pairs)
-
+       opt = []
        for j in range(len(pairs)):
            x, y = pairs[j]
            val = lcm(x, y)
 
            if val < vector[i]:
-               if (x != 1) and (y != 1):
-                   print(x, y)
+               print(x, y)
            else:
                continue
+
+
+print(main())
