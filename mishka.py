@@ -25,8 +25,6 @@ def main():
             friends_count += 1
             
 
-            
-
     if mishka_count > chris_count:
         print('Mishka')
     

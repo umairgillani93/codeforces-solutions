@@ -1,30 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<vector<int>> combs() {
-	vector<vector<int>> V;
-	int n;
-	cin >> n;
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n; j++) {
-			if (i + j == n) {
-				vector<int> v;
-				v.push_back(i);
-				v.push_back(j);
-			}
-			else {
-				continue;
-			}
-		}
-		V.push_back(v);
-			
-	}	
 
-	for (int i = 0; i < V.size(); i++) {
-		cout << V[i] << '\n';
+int main() {
+	vector<int> v{1,2,3,4,5};
+	vector<int> new_v;
+
+	sort(v.begin(), v.end(), greater<int>());
+
+	for (auto it = v.begin(); it != v.end(); it++) {
+		new_v.push_back(*it);
 	}
-	return V;
-	
+
+	for (int i = 0; i < new_v.size(); i++) {
+		cout << new_v[i] << '\n';
+	}
+
+	return 0;
 
 }
 
