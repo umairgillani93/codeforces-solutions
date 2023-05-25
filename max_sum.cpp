@@ -16,35 +16,56 @@ int main() {
 	int t;
 	cin >> t;
 
-	// test cases -> t
-	// numbers n, k ->
-	// n - length array [1, 2, 3 ,4 ... n]
-	// k -> number of moves
-	// each time we'll check if two minis are smaller than max
-	// then we'll remove two minis 
-	// other-wise we'll remove one max to get the best sum
-	
-
-	for (int i = 0; i < t; i++) {
-		vector<long long> final;
+	while (t--) {
 		int n, k;
 		cin >> n >> k;
-
-		vector<int> v(n);
-
-		for (int i = 0; i < k; i++) {
-			cin >> v[i];
+		vector<int> N(n);
+		for (int i = 0; i < n; i++) {
+			cin >> N[i];
 		}
 
-		for (auto x: v) {
-			cout << x << '\n';
+		for (int j = 0; j < N.size(); j++) {
+			cout << N[j] << '\n';
 		}
-		cout << '\n';
 	}
 
 	return 0;
-
 }
+
+//int main() {
+//	int t;
+//	cin >> t;
+//
+//	// test cases -> t
+//	// numbers n, k ->
+//	// n - length array [1, 2, 3 ,4 ... n]
+//	// k -> number of moves
+//	// each time we'll check if two minis are smaller than max
+//	// then we'll remove two minis 
+//	// other-wise we'll remove one max to get the best sum
+//	
+//
+//	vector<long long> final;
+//
+//	for (int i = 0; i < t; i++) {
+//		int n, k;
+//		cin >> n >> k;
+//
+//		vector<int> v(n);
+//
+//		for (int i = 0; i < k; i++) {
+//			cin >> v[i];
+//		}
+//
+//		for (auto x: v) {
+//			cout << x << '\n';
+//		}
+//		cout << '\n';
+//	}
+//
+//	return 0;
+//
+//}
 
 
 
