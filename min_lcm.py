@@ -48,7 +48,3 @@ def sol():
 
 if __name__ == '__main__':
     print(all_pairs(4))
-    
-
-    
-
