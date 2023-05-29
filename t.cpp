@@ -11,8 +11,8 @@ using namespace std;
 // arr = [5, 6]
 // sum = 11 is the right answer
 
-int sum(vector<int> &arr) {
-	int s = 0;
+long long sum(vector<int> &arr) {
+	long long s = 0;
 	for (int i = 0; i < arr.size(); i++) {
 		s += arr[i];
 	}
@@ -25,7 +25,7 @@ int main() {
 	int t;
 	cin >> t;
 
-	vector<int> output;
+	vector<long long> output;
 
 	vector<pair<int, vector<int>>> M;
 	
@@ -55,6 +55,7 @@ int main() {
 		// sort the vector
 		sort(arr.begin(), arr.end());
 
+		// business logic starts
 		for (int j = 0; j < M[i].first; j++) {
 			if ((arr[0] + arr[1] < arr[arr.size() - 1])) {
 				arr.erase(arr.begin());
@@ -67,17 +68,15 @@ int main() {
 
 		}
 
-		//int ans;
-		//ans  = sum(arr);
-		//output.push_back(ans);
-		//
-		for (int i = 0; i < arr.size(); i++) {
-			cout << arr[i] << " ";
-		}
-		cout << '\n';
-	
-		}
+		long long ans;
+		ans  = sum(arr);
+		output.push_back(ans);
+		
+}
 
+	for (auto x: output) {
+		cout << x << '\n';
+	}
 	return 0;
 }
 
