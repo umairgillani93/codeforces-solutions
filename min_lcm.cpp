@@ -1,46 +1,40 @@
+#include <iostream>
 #include <bits/stdc++.h>
 
 using namespace std;
 
-int custom_lcm(int x, int y) {
-	int min_num = min(x, y);
-	int p_lcm = 0;
-
-	for (int i = min_num; i > 0 ; i--) {
-		if (x % i == 0 && y % i == 0) {
-			p_lcm = i;
-			break;
-		}
-		else {
-			continue;
-		}
-	}
-	if (p_lcm == 1) {
-		return x * y;
-	}
-
-	else {
-		return p_lcm;
-	}	
-
+int LCM(int a, int b)
+{
+    int greater = max(a, b);
+    int smallest = min(a, b);
+    for (int i = greater; ; i += greater) {
+        if (i % smallest  == 0)
+            return i;
+    }
 }
+
 void sol() {
 	int n;
 	cin >> n;
 	vector<pair<int, int>> pairs;
 
-	for (int i = 1; i < n; i++) {
-		for (int j = 1; j < n; j++) {
-			if (i + j == n) {
-				pair<int, int> p;
-				p.first = i;
-				p.second = j;
-				pairs.push_back(p);
-			}
-
-			else {continue;}
+	int i = 0; 
+	int j = n - 1;
+	while (i <= n / 2 && j >= n /2) {
+		if (i + j == n) {
+			pair<int, int> p;
+			p.first = i;
+			p.second = j;
+			pairs.push_back(p);
+			i++;
+			j--;
 		}
+		else {
+			i++;
+			j--;
 	}
+	}
+
 
 	//for (int i = 0; i < pairs.size(); i++) {
 	//	cout << "first: "  << pairs[i].first << " second: " << pairs[i].second << '\n';
@@ -49,7 +43,7 @@ void sol() {
 
 	//int first = pairs[0].first;
 	//int sec = pairs[0].second;
-	int min_lcm = custom_lcm(pairs[0].first, pairs[0].second);
+	int min_lcm = LCM(pairs[0].first, pairs[0].second);
 	//cout << "first lcm: " << min_lcm<< '\n';
 
 	int x, y;
@@ -59,8 +53,9 @@ void sol() {
 		q = pairs[i].second;
 		
 		int new_lcm;
-		new_lcm = custom_lcm(p, q);
-		cout << "new lcm: " << new_lcm << '\n';
+		new_lcm = LCM(p, q);
+	
+		//cout << "new lcm: " << new_lcm << " x: " << x << " y: " << y << '\n';
 			
 
 		if (new_lcm <= min_lcm) {
@@ -73,16 +68,14 @@ void sol() {
 	}
 
 	cout << x << " " << y << '\n';
-
 }
 
 int main() {
-	cout << custom_lcm(5, 5) << '\n';
-	//int t;
-	//cin >> t;
-	//while (t--) {
-	//sol();
-
-	//}
+	//cout << custom_lcm(5, 5) << '\n';
+	int t;
+	cin >> t;
+	while (t--) {
+	sol();
+	}
 	return 0;
 }

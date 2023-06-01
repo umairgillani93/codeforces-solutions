@@ -3,28 +3,21 @@
 using namespace std;
 
 int main() {
-	vector<pair<int, int>> p{{1,4}, {2,3}, {3,2}, {4,1}};
 
-	int p_lcm = lcm(p[0].first, p[0].second);
-	int x = 0;
-	int y = 0;
-	
-	for (int i = 0; i < p.size(); i++) {
-		int new_lcm = lcm(p[i].first, p[i].second);
-		cout << "new lcm: " << new_lcm << '\n';
-
-		if (new_lcm <= p_lcm) {
-			x = p[i].first;
-			y = p[i].second;
-		}
-
-		else {continue;}
-
+	int n;
+	cin >> n;
+	vector<int> v(n);
+	for (int i = 0; i < n; i++) {
+		cin >> v[i];
 	}
 
-	cout << p_lcm << '\n';
-	cout << "x is: " << x << " y is: " << y << '\n';
-
-
+	int i = 0; 
+	int j = n - 1;
+	while (i <= n / 2 && j >= n / 2) {
+		cout << "first: " << v[i] << " second: " << v[j] << '\n';
+		i++;
+		j--;
+	}
+	cout << "done " << '\n';
 	return 0;
 }
