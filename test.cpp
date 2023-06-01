@@ -9,12 +9,10 @@ int main() {
 	v.push_back(2);
 	v.push_back(2);
 
-	v.erase(v.begin() + v.size() - 1);
+	int a = 10;
+	int b = 5;
+	cout << lcm(a, b) << '\n';
 
-	for (int i = 0; i < v.size(); i++) {
-		cout << v[i] << " ";
-	}
 
-	cout << '\n';
 	return 0;
 }
