@@ -1,16 +1,12 @@
 #include <iostream>
+#include <time.h>
 #include <bits/stdc++.h>
 
 using namespace std;
 
 int LCM(int a, int b)
 {
-    int greater = max(a, b);
-    int smallest = min(a, b);
-    for (int i = greater; ; i += greater) {
-        if (i % smallest  == 0)
-            return i;
-    }
+	return (a * b) / __gcd(a, b);
 }
 
 void sol() {
@@ -18,9 +14,10 @@ void sol() {
 	cin >> n;
 	vector<pair<int, int>> pairs;
 
-	int i = 0; 
+	int i = 1;
 	int j = n - 1;
-	while (i <= n / 2 && j >= n /2) {
+
+	while (i <= j) {
 		if (i + j == n) {
 			pair<int, int> p;
 			p.first = i;
@@ -28,25 +25,19 @@ void sol() {
 			pairs.push_back(p);
 			i++;
 			j--;
+
 		}
+
 		else {
 			i++;
 			j--;
+		}
+
 	}
-	}
 
-
-	//for (int i = 0; i < pairs.size(); i++) {
-	//	cout << "first: "  << pairs[i].first << " second: " << pairs[i].second << '\n';
-	//}
-
-
-	//int first = pairs[0].first;
-	//int sec = pairs[0].second;
 	int min_lcm = LCM(pairs[0].first, pairs[0].second);
-	//cout << "first lcm: " << min_lcm<< '\n';
-
 	int x, y;
+
 	for (int i = 0; i < pairs.size(); i++) {
 		int p, q;
 		p = pairs[i].first;
@@ -77,5 +68,7 @@ int main() {
 	while (t--) {
 	sol();
 	}
+	
 	return 0;
 }
+
