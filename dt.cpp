@@ -3,24 +3,31 @@
 using namespace std;
 
 
-void f(vector<int> v, int q) {
-	int j = v.size() - 1;
+
+int main() {
+	vector<int> v {1, 2, 11, 4, 5};
 	
-	while (j >= 0) {
-		if (v[j] <= q) {
-			cout << v[j] << '\n';
-			return;
+	int q = 10;
+
+	vector<vector<int>> output;
+	vector<int> inner;
+	for (int i = 0; i < v.size(); i++) {
+		if (v[i] <= q) {
+			inner.push_back(v[i]);	
 		}
 
 		else {
-			j--;
+			output.push_back(inner);
+			inner.erase();
 		}
 	}
-}
 
-int main() {
-	vector<int> v {1, 2, 3, 4, 5};
-	int q = 4;
-	f(v, q);
+	for (int i = 0; i < output.size(); i++) {
+		for (int j = 0; j < output[i].size(); j++) {
+			cout << output[i][j] << " ";
+		}
+		cout << '\n';
+	}
+
 	return 0;
 }

@@ -2,45 +2,60 @@
 
 using namespace std;
 
+int fact(int n) {
+	if (n == 0 || n == 1) {
+		return 1;
+	}
+
+	else {
+		return n * fact(n - 1);
+	}
+}
+
+int comb(int l, int k) {
+	int c = fact(l) / fact(k);
+	return c;
+}
+
 void sol() {
 	int n, k, q;
 	cin >> n >> k >> q;
-
 	vector<int> a(n);
 	for (int i = 0; i < n; i++) {
 		cin >> a[i];
 	}
-
-	sort(a.begin(), a.end());
-
-	int j = a.size() - 1;
-
 	int ans;
-	if (a[j] > q) {
+
+	vector<vector<int>> output;
+
+	if (q < *min_element(a.begin(), a.end())) {
+		//cout << "q is: " << q << " min is: " << *max_element(a.begin(), a.end()) << '\n';
 		ans = 0;
 		cout << ans << '\n';
 	}
 
-	if (a[j] == q) {
-		ans = 1;
-		cout <<< ans << '\n';
-	}
-	
-	j--;
 	else {
-		if (a[j] <= q) {
-			int l = 0;
-			for (int i = 0; i < j; i++) {
-				l++;
+		vector<int> v;
+		for (int i = 0; i < a.size(); i++) {
+			if (a[i] <= q) {
+				v.push_back(a[i]);
+				continue;
 			}
 
-			cout << l << '\n';
-		}
-
-		else {
-			j--;
+			else {
+				output.push_back(v);
+				v.clear();
+			}
 		}
 	}
+
+	for (int i = 0; i < output.size(); i++) {
+		for (int j = 0; j < output[i].size(); j++) {
+			cout << output[i][j] << " ";
+		}
+		cout << '\n';
+	}
+	
 }
 
 int main() {
@@ -50,25 +65,4 @@ int main() {
 		sol();
 	}
 	return 0;
-
 }
-
-
-
-// n = 3;
-// k = 1; max consequtive days
-// q = 15; max temp afforded
-// A = [-10, 5, 0]
-//
-// if q > A[n];
-// return count of all pairs
-//
-// else if q == A[n];
-// q = 0;
-// return 1;
-// else (q < A[n]) {
-// q--;
-// if (q > 
-//
-// }
-//
