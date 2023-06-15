@@ -17,6 +17,7 @@ int comb(int l, int k) {
 	return c;
 }
 
+
 void sol() {
 	int n, k, q;
 	cin >> n >> k >> q;
@@ -24,45 +25,43 @@ void sol() {
 	for (int i = 0; i < n; i++) {
 		cin >> a[i];
 	}
-	int ans;
-
-	vector<vector<int>> output;
+	
+	int ans = 0;
+	int c = 0;
+	vector<vector<int>> outer;
+	vector<int> inner;
 
 	if (q < *min_element(a.begin(), a.end())) {
-		//cout << "q is: " << q << " min is: " << *max_element(a.begin(), a.end()) << '\n';
 		ans = 0;
 		cout << ans << '\n';
 	}
 
 	else {
-		vector<int> v;
 		for (int i = 0; i < a.size(); i++) {
 			if (a[i] <= q) {
-				v.push_back(a[i]);
-				continue;
+				c++;
 			}
 
 			else {
-				output.push_back(v);
-				v.clear();
+				ans += comb(c, k);
+				c = 0;
 			}
 		}
 	}
 
-	for (int i = 0; i < output.size(); i++) {
-		for (int j = 0; j < output[i].size(); j++) {
-			cout << output[i][j] << " ";
-		}
-		cout << '\n';
+	if (c > 0) {
+		ans += comb(c, k);
 	}
-	
+
+	cout << ans << '\n';
 }
+
 
 int main() {
 	int t;
 	cin >> t;
 	while (t--) {
-		sol();
+	sol();
 	}
 	return 0;
 }

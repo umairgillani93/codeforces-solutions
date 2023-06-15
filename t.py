@@ -1,9 +1,16 @@
-def fact(n):
-    if (n == 1 or n == 0):
-        return 1
+v = [1, 2, 3, 11, 4, 5, 6]
 
-    return n * fact(n - 1)
+q = 10
+outer = []
+new_v = []
 
-if __name__ == '__main__':
-    t = fact(5) / (fact(1) * fact(4))
-    print(t)
+for i in range(len(v)):
+    if v[i] <= q:
+        new_v.append(v[i])
+
+    else:
+        outer.append(new_v)
+        new_v.clear()
+
+print(outer)
+        

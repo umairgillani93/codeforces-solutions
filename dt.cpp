@@ -2,32 +2,25 @@
 
 using namespace std;
 
-
-
 int main() {
-	vector<int> v {1, 2, 11, 4, 5};
-	
-	int q = 10;
+	vector<int> v {0, 3, -2, 5, -4, -4};
+	int q = 3;
 
-	vector<vector<int>> output;
-	vector<int> inner;
+	int c = 0;
 	for (int i = 0; i < v.size(); i++) {
 		if (v[i] <= q) {
-			inner.push_back(v[i]);	
+			c++;
 		}
 
 		else {
-			output.push_back(inner);
-			inner.erase();
+			
+			c = 0;
 		}
 	}
 
-	for (int i = 0; i < output.size(); i++) {
-		for (int j = 0; j < output[i].size(); j++) {
-			cout << output[i][j] << " ";
-		}
-		cout << '\n';
-	}
-
+	cout << "final c is: " << c << '\n';
 	return 0;
+
 }
+
+
