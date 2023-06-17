@@ -1,0 +1,86 @@
+
+
+                30
+               /  \
+              20   50
+             / \    / \
+            10  25  40 60
+
+- Searching in a binary search tree
+
+Node * bSearchTree(Node *t, int k) {
+	// first i'll try to write an iterative solution
+	
+	while (t ! = NULL) {
+	if (key == t -> data) {
+        return t;
+}
+
+	else if (key > t -> data) {
+		t - t - > r_child;
+}
+	else {
+		t = t -> l_child;
+}
+}
+	return NULL;
+}
+
+// let's now write its recursive solution
+Nod * bSearchREcursive(Node *t , int k) {
+	if (k == t -> data) {
+		return t;
+}
+
+	else if (k > t -> data) {
+		bSearchRecursive(t -> r_child, k);
+}
+
+	else {
+		bSearchREcursive(t -> l_child, k);
+}
+
+	return NULL;
+}
+
+
+// Let"s now write insert functions for binary search tree
+
+void insertBinarySearch(Node *t, int key) {
+	// there's should not be any duplicate in BST
+	// check root node's value first
+	
+	if (key == t -> data) {
+		t -> data = key;
+}
+
+	else if (key > t -> data) {
+		t = t -> r_child;
+}
+	else if (key < t -> data) {
+		t = t -> l_child;
+}
+}
+
+
+//                30
+//               /  \
+//              20   50
+//             / \    / \
+//            10  25  40 60
+
+	else if (
+
+
+
+
+
+}
+}
+
+
+
+
+
+
+
