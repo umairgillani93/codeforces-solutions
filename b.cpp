@@ -1,44 +1,32 @@
-#include <iostream>
 #include <bits/stdc++.h>
 
 using namespace std;
 
-void swap(int x, int y) {
-	int z;
-	z = x;
-	x = y;
-	y = z;
-}
-
 int main() {
-	
-	int x = 10;
-	int y = 20;
+	int t;
+	cin >> t;
+	while (t--) {
+		int n;
+		cin >> n;
+		vector<int> arr(n);
+		for (int i = 0; i < n; i++) {
+			cin >> arr[i];
+		}
+		sort(arr.begin(), arr.end());
+		unordered_map<int, int> map;
 
-	cout << swap(x, y) << '\n';
-	//int t;
-	//cin >> t;
-	//vector<int> v(t);
+		for (int i = 0; i < arr.size(); i++) {
+			map[arr[i]]++;
+		}
 
-	//for (int i = 0; i < t; i++) {
-	//	cin >> v[i];
-	//}
-	//
-	//// bubble sort algorithm
-	//// time complexity O(n^2)
-	//// arr = [7, 5, 1, 3, 2]
-	////
-	//
-	//for (int i = 0; i < v.size(); i++) {
-	//	for (int j = 0; j < v.size() - 1; j++) {
-	//		if (v[j] > v[j + 1]) {
-	//			swap(v[j], v[j + 1]);
-	//		}
-	//	}
-	//}
+		int count = 0;
+		for (auto it = map.begin(); it != map.end(); it++) {
+			if (it -> second > 1) {
+				count += it -> second / 2;
+			}
+		}
+		cout << count << '\n';
+	}
 
-	
 	return 0;
-
 }
-
