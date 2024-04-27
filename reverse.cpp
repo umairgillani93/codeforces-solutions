@@ -2,13 +2,6 @@
 
 using namespace std;
 
-void swap(int &x, int &y) {
-	int z;
-	z = x;
-	x = y;
-	y = z;
-}
-
 int main() {
 	int t;
 	cin >> t;
@@ -19,29 +12,26 @@ int main() {
 		for (int i = 0; i < n; i++) {
 			cin >> arr[i];
 		}
-
-		for (int i = 0; i < n - 1; i ++) {
-			if (arr[i] > arr[i + 1] && abs(arr[i] - arr[i + 1]) > 1) {
-				int c = i + 1;
-
-				for (int j = c; j < n; i++) {
-					if (arr[j] > arr[i] && arr[j] < arr[i + 1]) {
-						swap(arr[i + 1], arr[j]);
-					}
-				}
+		int l = 0;
+		int r = 0; 
+		for (int i = 0; i < arr.size(); i++) {
+			if (arr[i] != i + 1) {
+				int left = i;
 			}
+			
+			for (int j = i + 1; j < n; j++) {
+				if (arr[j] == arr[i]) {
+					int right = j;
+					break;
+				}	
+			}	
 
-			else {
-				swap(arr[i], arr[i + 1]);
-			}
+			cout << l << " " << r << '\n';
 		}
-		
-		for (auto &c: arr) {
-			cout << c << " ";
 
-		}
-		cout << '\n';
 	}
 
 	return 0;
+
 }
+
