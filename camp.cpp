@@ -1,6 +1,13 @@
 #include <bits/stdc++.h>
 
 using namespace std;
+/*
+ * In this problem, we have intially got 3 inputs
+ * a, b, c
+ * a -> number of introverts, can have only 1 tent / person
+ * b -> extroverts, each extrovert can have 2 other persons inside the tent
+ * c -> universal, can have any number of persons with him from (1 - 3)
+ */
 
 int main() {
 	int t;
