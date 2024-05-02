@@ -28,20 +28,20 @@ int main() {
 			else {break;};
 		}
 
-		for (auto c: xs) {
-			cout << c << " ";
-		}
-		cout << '\n';
-		for (auto k: ys) {
-			cout << k << " ";
-		}
+		// for (auto c: xs) {
+		// 	cout << c << " ";
+		// }
+		// cout << '\n';
+		// for (auto k: ys) {
+		// 	cout << k << " ";
+		// }
 
 		int ans = 0;
 		for (int i = 0; i < xs.size(); i++) {
 			for (int j = 0; j < ys.size(); j++) {
 				int k = l / (pow(a, xs[i]) * pow(b, ys[j]));
 				if (k * pow(a, xs[i]) * pow(b, ys[j]) == l) {
-					cout << "k: " << k << " x: " << xs[i] << " y: " << ys[j] << '\n';
+					// cout << "k: " << k << " x: " << xs[i] << " y: " << ys[j] << '\n';
 					ans++;
 				}
 				else {continue;}
