@@ -3,67 +3,54 @@
 using namespace std;
 
 int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(0);
 	int t;
 	cin >> t;
 	while (t--) {
-		int n, m;
-		cin >> n >> m;
-		vector<int> low;
-		vector<int> high;
-		int ans = 0;
-		for (int i = 1; i <= n; i++) {
-			low.push_back(i);
-		}
-		
-		for (int i = 1; i <= m; i++) {
-			high.push_back(i);
+		int a, b, l;
+		int C = 1e6;
+		cin >> a >> b >> l;
+		vector<int> xs;
+		vector<int> ys;
+
+		for (int i = 0; i <= C ; i++) {
+			if (pow(a, i) <= l) {
+				xs.push_back(i);
+			}
+			else {break;};
 		}
 
-		for (int i = 0; i < n; i++) {
-			if (low[i] >= high[i]) {
-				ans++;
+		for (int i = 0; i <= C ; i++) {
+			if (pow(b, i) <= l) {
+				ys.push_back(i);
+			}
+			else {break;};
+		}
+
+		for (auto c: xs) {
+			cout << c << " ";
+		}
+		cout << '\n';
+		for (auto k: ys) {
+			cout << k << " ";
+		}
+
+		int ans = 0;
+		for (int i = 0; i < xs.size(); i++) {
+			for (int j = 0; j < ys.size(); j++) {
+				int k = l / (pow(a, xs[i]) * pow(b, ys[j]));
+				if (k * pow(a, xs[i]) * pow(b, ys[j]) == l) {
+					cout << "k: " << k << " x: " << xs[i] << " y: " << ys[j] << '\n';
+					ans++;
+				}
+				else {continue;}
 			}
 		}
+
 		cout << ans << '\n';
-
-
-		// auto Max = [&](int x, int y) {
-		// 	if (n >= m) {
-		// 		return n;
-		// 	}
-		// 	else {return m;};
-		// };
-
-		// auto Min = [&](int x, int y) {
-		// 	if (n <= m) {
-		// 		return n;
-		// 	}
-		// 	else {return m;}
-		// };
-		// 
-		// auto g = Max(n, m);
-		// auto l = Min(n, m);
-		// vector<int> low(l);
-		// vector<int> high(g);
-		// int ans = 0;
-
-		// for (int i = 1; i <= l; i++) {
-		// 	low.push_back(i);
-		// }
-
-		// for (int j = 1; j <= g; j++) {
-		// 	high.push_back(j);
-		// }
-
-		// for (int i = 0; i < low.size(); i++) {
-		// 	if (low[i] >= high[i]) {
-		// 		ans++;
-		// 	}
-		// 	else {break;}
-
-		// }
 	}
 
 	return 0;
 
-}
+}	
