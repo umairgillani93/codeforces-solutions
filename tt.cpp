@@ -1,74 +1,69 @@
-#include <iostream>
 #include <bits/stdc++.h>
 
 using namespace std;
 
-int max(vector<int> &arr) {
-	int max_num = arr[0];
-	for (int i = 1; i < arr.size(); i++) {
-		if (arr[i] > max_num) {
-			max_num = arr[i];
-		}
-		else {continue;}
-	}
-
-	return max_num;
-}
-
-long long sum(vector<int> &v) {
-	long long s = 0;
-	for (int i = 0; i < v.size(); i++) {
-		s += v[i];
-	}
-
-	return s;
-}
-
 int main() {
-	int n, k;
-	cin >> n >> k;
-	vector<int> arr(n);
-
-	for (int i = 0; i < n; i++) {
-		cin >> arr[i];
-	}
-
-	sort(arr.begin(), arr.end());
-
-	cout << "sorted intial array: " << '\n';
-	for (int it = 0; it < arr.size(); it ++) {
-		cout << arr[it] << " ";
-	}
-	cout << '\n';
-
-
-	for (int it = 0; it < k; it++) {
-		if ((arr[0] + arr[1]) < max(arr)) {
-			arr.erase(arr.begin());
-			arr.erase(arr.begin());
-
-			for (int i = 0; i < arr.size(); i++) {
-				cout << arr[i] << " ";
-			}
-		cout << '\n';
+	int t;
+	cin >> t;
+	while (t--) {
+		int n, m;
+		cin >> n >> m;
+		vector<int> low;
+		vector<int> high;
+		int ans = 0;
+		for (int i = 1; i <= n; i++) {
+			low.push_back(i);
+		}
+		
+		for (int i = 1; i <= m; i++) {
+			high.push_back(i);
 		}
 
-
-		else {
-			arr.erase(arr.begin() + arr.size() - 1);
-			
-			for (int i = 0; i < arr.size(); i++) {
-				cout << arr[i] << " ";
+		for (int i = 0; i < n; i++) {
+			if (low[i] >= high[i]) {
+				ans++;
 			}
 		}
+		cout << ans << '\n';
+
+
+		// auto Max = [&](int x, int y) {
+		// 	if (n >= m) {
+		// 		return n;
+		// 	}
+		// 	else {return m;};
+		// };
+
+		// auto Min = [&](int x, int y) {
+		// 	if (n <= m) {
+		// 		return n;
+		// 	}
+		// 	else {return m;}
+		// };
+		// 
+		// auto g = Max(n, m);
+		// auto l = Min(n, m);
+		// vector<int> low(l);
+		// vector<int> high(g);
+		// int ans = 0;
+
+		// for (int i = 1; i <= l; i++) {
+		// 	low.push_back(i);
+		// }
+
+		// for (int j = 1; j <= g; j++) {
+		// 	high.push_back(j);
+		// }
+
+		// for (int i = 0; i < low.size(); i++) {
+		// 	if (low[i] >= high[i]) {
+		// 		ans++;
+		// 	}
+		// 	else {break;}
+
+		// }
 	}
-
-	cout << '\n';
-	long long s = 0;
-	s = sum(arr);
-	cout << '\n';
-	cout << "sum is: " <<  s << '\n';
-
 
 	return 0;
+
 }

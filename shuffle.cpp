@@ -10,11 +10,6 @@ int main() {
 		cin >> arr[i];
 	}
 	random_shuffle(arr.begin(), arr.begin() + n);
-	
-	for (auto c: arr) {
-		cout << c << '\n';
-	}
 
 	return 0;
-
 }
