@@ -1,4 +1,17 @@
 #include <bits/stdc++.h>
+/*
+ * we have got 2 numbers a, b
+ * we need find the greatest common divisor or highest common factor
+ * a = 5, b = 10 the common divisor can't be > a 5 / 7
+ * res = min(a, b)
+ * res % a and res % b == 0 : res
+ * res--;
+ */
+// a = 2, b = 3;
+// res = min(a, b) -> 2
+// if a % 2 == 0 && b % 2 == 0
+// res--, res = 2
+ 
 
 using namespace std;
 
