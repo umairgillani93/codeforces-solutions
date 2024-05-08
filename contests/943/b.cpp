@@ -13,10 +13,8 @@ bool IsSub(string &x, string &y) {
     int i = 0;
     int start = 0;
     int end = y.size();
-    bool ok = false;
     while (i <= x.size() && end <= x.size()) {
         if (x.substr(start, end) == y) {
-            ok = true;
             return true;
         }
 
@@ -41,28 +39,58 @@ int main() {
 	int t;
 	cin >> t;
 	while (t--) {
-		string a, b;
-		cin >> a >> b;
-		int ans = 0;
+		int n, m;
+		cin >> n >> m;
+		string a;
+		cin >> a;
+		string b;
+		cin >> b;
+		if (a.size() >= b.size()) {
+			int ans = 0;
 
-		a = a.substr(0, b.size());
-		// we'll first chop of the length of a as a.size() > b.size() is not required in this problem
-		// we'll first start with first letter
-		// string new_a = a.substr(0, i);
-		//
-		int best = 0;
-		
-		for (int i = 0; i <= a.size(); i++) {
-			string new_a = a.substr(0, i);
-			cout << new_a << '\n';
-			if (IsSub(b, new_a)) {
-				ans = new_a.size();
-				// cout << ans << '\n';
-				best = max(ans, best);
+			a = a.substr(0, b.size());
+			// we'll first chop of the length of a as a.size() > b.size() is not required in this problem
+			// we'll first start with first letter
+			// string new_a = a.substr(0, i);
+			//
+			int best = 0;
+			
+			for (int i = 0; i <= a.size(); i++) {
+				string new_a = a.substr(0, i);
+				// cout << new_a << '\n';
+				if (IsSub(b, new_a)) {
+					ans = new_a.size();
+					// cout << ans << '\n';
+					best = max(ans, best);
+				}
 			}
+			cout << best << '\n';
 		}
-		cout << best << '\n';
+
+		else {
+			int ans = 0;
+
+			b = b.substr(0, a.size());
+			// we'll first chop of the length of a as a.size() > b.size() is not required in this problem
+			// we'll first start with first letter
+			// string new_a = a.substr(0, i);
+			//
+			int best = 0;
+			
+			for (int i = 0; i <= b.size(); i++) {
+				string new_b = b.substr(0, i);
+				// cout << new_b << '\n';
+				if (IsSub(a, new_b)) {
+					ans = new_b.size();
+					// cout << ans << '\n';
+					best = max(ans, best);
+				}
+			}
+			cout << best << '\n';
+			
+		}
 	}
+	
 
 	return 0;
 }
