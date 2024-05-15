@@ -3,18 +3,9 @@
 using namespace std;
 
 int main() {
-	vector<int> arr(6);
-	for (int i = 0; i < 6; i++) {
-		cin >> arr[i];
-	}
-	int x;
-	cin >> x;
-	vector<int> svs(x);
-	for (int j = 0; j < x; j++) {
-		cin >> svs[j];
-	}
-	sort(svs.begin(), svs.end(), greater<int>());
-
+	vector<int> arr = {0, 0, 6, 3, 4, 1};
+	int x = 3;
+	vector<int> svs = {700}; 
 
 	int a, b, c, d, e, f;
 	a = arr[0];
@@ -23,107 +14,106 @@ int main() {
 	d = arr[3];
 	e = arr[4];
 	f = arr[5];
+	cout << "before: " <<  f << '\n';
+	cout << "before: " <<  e << '\n';
 
-	int64_t coins_sum = a * 1 + b * 5 + c * 10 + d * 50 + e * 100 + f * 500;
+	for (int i = 0; i < svs.size(); i++) {
+		int sv = svs[i];
+		while (sv > 0) {
+			if (sv >= 500) {
+				sv %= 500;
+				f -= sv / 500;
+				cout << sv << '\n';
+				cout << f << '\n';
 
-	if (coins_sum == accumulate(svs.begin(), svs.end(), 0)) {
-		cout << "YES" << '\n';
-	}
-
-	else if (coins_sum < accumulate(svs.begin(), svs.end(), 0)) {
-		cout << "NO" << '\n';
-	}
-
-	else {
-
-		for (int i = 0; i < svs.size(); i++) {
-			int sv = svs[i];
-			while (sv > 0) {
-				if (sv >= 500) {
-					sv %= 500;
-					f -= sv / 500;
-
-					if (f < 0) {
-						cout << "no" << '\n';
-						return 0;
-					}
-
-					if (sv < 0) {
-						cout << "NO" << '\n';
-						return 0;
-					}
-				}	
-				else if (sv >= 100 && sv < 500) {
-					sv %= 100;
-					e -= sv /100;
-
-					if (e < 0) {
-						cout << "NO" << '\n';
-						return 0; 
-					}
-					if (sv < 0) {
-						cout << "NO" << '\n';
-						return 0;
-					}
+				if (f < 0) {
+					cout << "NO" << '\n';
+					return 0;
 				}
 
-				else if (sv >= 50 && sv < 100) {
-					sv %= 50;
-					d -= sv / 50;
-					if (d < 0) {
-						cout << "NO" << '\n';
-						return 0;
-					}
-					if (sv < 0) {
-						cout << "NO" << '\n';
-						return 0;
-					}
+				if (sv < 0) {
+					cout << "NO" << '\n';
+					return 0;
 				}
-				
-				else if (sv >= 10 && sv < 50) {
-					sv %= 10;
-					c -= sv / 10;
-					if (c < 0) {
-						cout << "NO" << '\n';
-						return 0;
-					}
-					if (sv < 0) {
-						cout << "NO" << '\n';
-						return 0;
-					}
-				}	
+			}	
+			else if (sv >= 100 && sv < 500) {
+				sv %= 100;
+				e -= sv /100;
+				cout << sv << '\n';
+				cout << e << '\n';
 
-				else if (sv >= 5 && sv < 10) {
-					sv %= 5;
-					b -= sv / 5;
-					if (b < 0) {
-						cout << "NO" << '\n';
-						return 0;
-					}
-					if (sv < 0) {
-						cout << "NO" << '\n';
-						return 0;
-					}
+				if (e < 0) {
+					cout << "NO" << '\n';
+					return 0; 
 				}
-
-				else {
-					if (sv > a) {
-						cout << "NO" << '\n';
-						return 0;
-					}
-					if (sv < 0) {
-						cout << "NO" << '\n';
-						return 0;
-					}
-					// else {
-					// 	cout << "yes" << '\n';
-					// 	return 0;
-					// }
+				if (sv < 0) {
+					cout << "NO" << '\n';
+					return 0;
 				}
 			}
+
+			else if (sv >= 50 && sv < 100) {
+				sv %= 50;
+				d -= sv / 50;
+				cout << sv << '\n';
+				cout << "d: " << e << '\n';
+				if (d < 0) {
+					cout << "NO" << '\n';
+					return 0;
+				}
+				if (sv < 0) {
+					cout << "NO" << '\n';
+					return 0;
+				}
+			}
+			
+			else if (sv >= 10 && sv < 50) {
+				sv %= 10;
+				c -= sv / 10;
+				cout << sv << '\n';
+				cout << "c: " << e << '\n';
+				if (c < 0) {
+					cout << "NO" << '\n';
+					return 0;
+				}
+				if (sv < 0) {
+					cout << "NO" << '\n';
+					return 0;
+				}
+			}	
+
+			else if (sv >= 5 && sv < 10) {
+				sv %= 5;
+				b -= sv / 5;
+				cout << sv << '\n';
+				cout << "b: " << e << '\n';
+				if (b < 0) {
+					cout << "NO" << '\n';
+					return 0;
+				}
+				if (sv < 0) {
+					cout << "NO" << '\n';
+					return 0;
+				}
+			}
+
+			else {
+				if (sv > a) {
+					cout << "NO" << '\n';
+					return 0;
+				}
+				if (sv < 0) {
+					cout << "NO" << '\n';
+					return 0;
+				}
+				// else {
+				// 	cout << "yes" << '\n';
+				// 	return 0;
+				// }
+			}
 		}
-		cout << "YES" << '\n';
 	}
+	cout << "YES" << '\n';
 	
 	return 0;
 
