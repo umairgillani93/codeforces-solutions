@@ -6,51 +6,37 @@ int main() {
 	int t;
 	cin >> t;
 	while (t--) {
-		int n;
-		long long k;
+		int n, k;
 		cin >> n >> k;
-		vector<int> arr(n);
+		deque<int> dq(n);
 		for (int i = 0; i < n; i++) {
-			cin >> arr[i];
+			cin >> dq[i];
 		}
-
-		int c = 0;
-		bool done = false;
-		int check = 1;
-		while (!done) {
-			if (check % 2 != 0) {
-				arr[0]--;
-				check++;
-				if (arr[0] == 0) {
-					c++;
-					arr.erase(arr.begin() + 0);
-				}
-				if (arr.empty()) {
-					done = true;
-				}
+		while (dq.size() > 1 && k) {
+			int m = min(dq.front(), dq.back());
+			if (k < 2 * m) {
+				// check if 2 * min is greater than k
+				// in this case we'll only process indivitual item
+				// and k value will be zero at the end to break the loop
+				dq.front() -= k / 2 + k % 2;
+				dq.back() -= k / 2;
+				k = 0;
 			}
 			else {
-				arr[n - 1]--;
-				check++;
-				if (arr[n - 1] == 0) {
-					c++;
-					arr.erase(arr.begin() + n - 1);
-				}
-				if (arr.empty()) {
-					done = true;
-				}
+				dq.front() -= m;
+				dq.back() -= m;
+				k -= 2 * m;
 			}
-			k--;
-			if (k == 0) {
-				done = true;
+			
+			if (dq.front() == 0) {
+				dq.pop_front();
 			}
-			for (auto &c: arr) {
-				cout << c << " ";
+			if (dq.back() == 0) {
+				dq.pop_back();
 			}
-			cout << '\n';
 		}
-		cout << n - arr.size() << '\n';
+		int ans = n - dq.size();
+		cout << ans + (dq.size() && dq.front() <= k) << '\n';
 	}
 	return 0;
-
 }

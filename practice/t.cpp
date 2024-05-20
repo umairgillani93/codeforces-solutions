@@ -3,51 +3,40 @@
 using namespace std;
 
 int main() {
-	int n, k;
-	cin >> n >> k;
-	vector<long long> arr(n);
-	for (int i = 0; i < n; i++) {
-		cin >> arr[i];
-	}
-
-	long long ans = 0;
-
-	if (k == 0) {
-		ans = accumulate(arr.begin(), arr.end(), 0);
-		cout << ans << '\n';
-	}
-
-	if (arr.size() == 1) {
-		ans = arr[0];
-		cout << ans << '\n';
-	}
-
-	else {
-		while (k--) {
-			long long dist = abs(arr[n - 2] - arr[n - 1]);
-			int first = 0;
-			int second = 1;
-			for (int i = arr.size() - 1; i >= 0; i--) {
-				if (abs(arr[i] - arr[i + 1]) > dist) {
-					cout << "new_dist: " << dist << '\n';
-					first = i;
-					second = i + 1;
-				}	
-			}
-			if (arr[first] <= arr[second]) {
-				arr[second] = arr[first];
+	int t;
+	cin >> t;
+	while (t--) {
+		int n, k;
+		cin >> n >> k;
+		deque<int> dq(n);
+		for (int i = 0; i < n; i++) {
+			cin >> dq[i];
+		}
+		while (dq.size() > 1 && k) {
+			int m = min(dq.front(), dq.back());
+			if (k < 2 * m) {
+				// check if 2 * min is greater than k
+				// in this case we'll only process indivitual item
+				// and k value will be zero at the end to break the loop
+				dq.front() -= k / 2 + k % 2;
+				dq.back() -= k / 2;
+				k = 0;
 			}
 			else {
-				arr[first] = arr[second];
+				dq.front() -= m;
+				dq.back() -= m;
+				k -= 2 * m;
 			}
-
-			for (auto &k: arr) {
-				cout << k << " ";
+			
+			if (dq.front() == 0) {
+				dq.pop_front();
 			}
-			cout << '\n';
+			if (dq.back() == 0) {
+				dq.pop_back();
+			}
 		}
+		int ans = n - dq.size();
+		cout << ans + (dq.size() && dq.front() <= k) << '\n';
 	}
-
-
 	return 0;
 }
