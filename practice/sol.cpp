@@ -3,29 +3,50 @@
 using namespace std;
 
 int main() {
-	int n, m;
-	cin >> n >> m;
-	vector<vector<char>> arr(n, vector<char>(m));
-	for (int i = 0; i < n; i++ ) {
-		for (int j = 0; j < m; j++) {
-			cin >> arr[i][j];
+	int t;
+	cin >> t;
+	while (t--) {
+		int n;
+		cin >> n;
+		bool ok = true;
+		auto Check = [&](int n) {
+			for (int i = 2; i < n; i++) {
+				if (n % i == 0) {
+					return false;
+				}
+			}
+			return true;
+		};
+		// auto Factor = [&](int n, int i) {
+		// 	if (n % i == 0) {
+		// 		return true;
+		// 	}
+		// 	else {
+		// 		return false;
+		// 	}
+		// };
+		/* so the problem asks us to check if a number 'n' can be obtained by the product of binary decimals
+		 * the approach is to factorize n and find it's prime factors
+		 * if it has prime factor other than '2' and '5' then we cant show it as product of binary decimals
+		 * because binary decimals are the power of the i.e 2 * 5 = 10 so there MUST only be two prime factors of 'n' i.e [2, 5]
+		 */
+
+		bool check = true;
+		for (int i = 2; i < n; i++) {
+			if (n % i == 0 && (i == 2 || i == 5)) {
+				continue;
+			}
+			else {
+				check = false;
+				break;
+			}
+		}
+		if (!check) {
+			cout << "NO" << '\n';
+		}
+		else {
+			cout << "YES" << '\n';
 		}
 	}
-
-	if ((arr[0][0] == arr[0][m - 1]) || (arr[0][0] == arr[0][m - 1]) || (arr[n - 1][0] == arr[n - 1][m - 1]) || (arr[0][m - 1] == arr[n - 1][m - 1])) {
-		cout << "YES" << '\n';
-	}
-	else {
-		cout << "TBI" << '\n';
-	}
-
-
-	// for (int i = 0; i < arr.size(); i++) {
-	// 	for (int j = 0;  j < arr[i].size(); j++) {
-	// 		cout << arr[i][j] << " ";
-	// 	}
-	// 	cout << '\n';
-	// }
 	return 0;
-
-}	
+}
