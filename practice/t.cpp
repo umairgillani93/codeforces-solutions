@@ -6,37 +6,17 @@ int main() {
 	int t;
 	cin >> t;
 	while (t--) {
-		int n;
-		cin >> n;
-		string s;
-		cin >> s;
-		int first = 0;
-		int second = 0;
-		int ans = 0;
-		for (int i = 0; i < n - 2; i++) {
-			string sub = "";
-			sub += s[i];
-			sub += s[i + 1];
-			sub += s[i + 2];
-
-			if (sub == "pie" || sub == "map") {
-				first++;
-			}
+		int a, b, c;
+		cin >> a >> b >> c;
+		if (a < b && b < c) {
+			cout << "STAIR" << '\n';
 		}
-
-		for (int i = 0; i < n - 4; i++) {
-			string sub = "";
-			sub += s[i];
-			sub += s[i + 1];
-			sub += s[i + 2];
-			sub += s[i + 3];
-			sub += s[i + 4];
-			if (sub == "mapie") {
-				second++;
-			}
+		else if (a < b && b > c) {
+			cout << "PEAK" << '\n';
 		}
-		cout << first - second << '\n';
-
+		else {
+			cout << "NONE" << '\n';
+		}
 	}
 	return 0;
 }
