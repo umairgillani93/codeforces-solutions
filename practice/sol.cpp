@@ -8,43 +8,28 @@ int main() {
 	while (t--) {
 		int n;
 		cin >> n;
-		bool ok = true;
-		auto Check = [&](int n) {
-			for (int i = 2; i < n; i++) {
-				if (n % i == 0) {
-					return false;
-				}
+		vector<int> arr(n);
+		int prev = -1;
+		for (int i = 0; i < n; i++) {
+			cin >> arr[i];
+		}
+		bool check = false;
+		for (int i = 0; i < n; i++) {
+			int a = arr[i] / 10;
+			int b = arr[i] % 10;
+			if (a >= prev && b >= a) {
+				prev = b;
 			}
-			return true;
-		};
-		// auto Factor = [&](int n, int i) {
-		// 	if (n % i == 0) {
-		// 		return true;
-		// 	}
-		// 	else {
-		// 		return false;
-		// 	}
-		// };
-		/* so the problem asks us to check if a number 'n' can be obtained by the product of binary decimals
-		 * the approach is to factorize n and find it's prime factors
-		 * if it has prime factor other than '2' and '5' then we cant show it as product of binary decimals
-		 * because binary decimals are the power of the i.e 2 * 5 = 10 so there MUST only be two prime factors of 'n' i.e [2, 5]
-		 */
-
-		bool check = true;
-		for (int i = 2; i < n; i++) {
-			if (n % i == 0 && (i == 2 || i == 5)) {
-				continue;
+			else if (arr[i] >= prev) {
+				prev = arr[i];
 			}
 			else {
-				check = false;
+				cout << "NO" << '\n';
+				check = true;
 				break;
 			}
 		}
-		if (!check) {
-			cout << "NO" << '\n';
-		}
-		else {
+		if (check == false) {
 			cout << "YES" << '\n';
 		}
 	}
