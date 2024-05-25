@@ -1,28 +1,96 @@
 #include <bits/stdc++.h>
 
-using i64 = long long;
+using namespace std;
 
-void solve() {
-    int n;
-    std::cin >> n;
-    std::vector<int> a(n);
-    for (int i = 0; i < n; i++) {
-        std::cin >> a[i];
-    }
-    std::sort(a.begin(), a.end());
-    int p = (n + 1) / 2 - 1;
-    int res = std::count(a.begin() + p, a.end(), a[p]);
-    std::cout << res << "\n";
-}
-
-signed main() {
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(nullptr);
-
-    int t = 1;
-    std::cin >> t;
-
+int main() {
+    int t;
+    cin >> t;
     while (t--) {
-        solve();
+        int a, b, c;
+        cin >> a >> b >> c;
+        long long t = 0;
+
+        if (a > 0 && b == 0 && c == 0) {
+            t += a;
+            cout << t << '\n';
+            continue;
+        }
+        
+        if (a == 0 && b == 0 && c == 0) {
+            cout << 0 << '\n';
+            continue;
+        }
+        
+        if (a == 0 && b > 0 && c == 0) {
+            if (b >= 3) {
+                t = (b % 3 == 0) ? b / 3 : -1;
+            } else {
+                t = -1;
+            }
+            cout << t << '\n';
+            continue;
+        }
+        
+        if (a == 0 && b == 0 && c > 0) {
+            if (c >= 3) {
+                t = (c / 3) + (c % 3 == 0 ? 0 : 1);
+            } else {
+                t++;
+            }
+            cout << t << '\n';
+            continue;
+        }
+
+        t += a;
+        if (b >= 3) {
+            int q = b / 3;
+            t += q;
+            int r = b % 3;
+            if (r > 0) {
+                t++;
+                if (r == 1) {
+                    c -= 2;
+                } else if (r == 2) {
+                    c--;
+                }
+            }
+            if (c < 0) {
+                cout << -1 << '\n';
+                continue;
+            } else {
+                if (c >= 3) {
+                    t += c / 3;
+                    if (c % 3 > 0) {
+                        t++;
+                    }
+                } else {
+                    t += (c > 0) ? 1 : 0;
+                }
+            }
+        } else {
+            t++;
+            if (b == 1) {
+                c -= 2;
+            } else if (b == 2) {
+                c--;
+            }
+
+            if (c < 0) {
+                cout << -1 << '\n';
+                continue;
+            } else {
+                if (c >= 3) {
+                    t += c / 3;
+                    if (c % 3 > 0) {
+                        t++;
+                    }
+                } else {
+                    t += (c > 0) ? 1 : 0;
+                }
+            }
+        }
+        cout << t << '\n';
     }
+    return 0;
 }
+

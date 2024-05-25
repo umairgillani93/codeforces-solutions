@@ -1,21 +1,29 @@
-#include <bits/stdc++.h>
+#include <iostream>
 
 using namespace std;
+using ll = long long;
 
-int main() {
-	int t;
-	cin >> t;
-	while (t--) {
-		int n;
-		cin >> n;
-		vector<int> arr(n);
-		for (int i = 0; i < n; i++) {
-			cin >> arr[i];
-		}
-		sort(arr.begin(), arr.end());
-		int mid = (n + 1) / 2 - 1;
-		int ans = count(arr.begin() + mid, arr.end(), arr[mid]);
-		cout << ans << '\n';
-	}
-	return 0;
+void solve() {
+    ll single, poly, uni;
+    cin >> single >> poly >> uni;
+    ll needPoly = (3 - poly % 3) % 3;
+    if (poly > 0 && needPoly > uni) {
+        cout << "-1\n";
+        return;
+    }
+
+    uni -= needPoly;
+    poly += needPoly;
+
+    ll mn = single + uni / 3 + (uni % 3 + 1) / 2 + poly / 3;
+    cout << mn << '\n';
+}
+
+int32_t main() {
+    ll T;
+    cin >> T;
+    while(T--){
+        solve();
+    }
+    return 0;
 }
