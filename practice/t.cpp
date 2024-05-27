@@ -1,38 +1,40 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
 
-using namespace std;
+void solve() {
+    int n;
+    std::cin >> n;
+    std::string b;
+    std::cin >> b;
+
+    std::vector<int> cnt(26, 0);
+    for (char c : b) {
+        cnt[c - 'a'] = 1;
+    }
+
+    std::string tmp;
+    for (int i = 0; i < 26; ++i) {
+        if (cnt[i] > 0) {
+            tmp += (char)('a' + i);
+        }
+    }
+
+    std::string a;
+    for (char c : b) {
+        a += tmp[tmp.size() - 1 - tmp.find(c)];
+    }
+
+    std::cout << a << std::endl;
+}
 
 int main() {
-	int t;
-	cin >> t;
-	while (t--) {
-		int n;
-		cin >> n;
-		vector<int> a(n);
-		for (int i = 0; i < n; i++) {
-			cin >> a[i];
-		}
-		int64_t sum  = accumulate(a.begin(), a.end(), 0);
-		if (sum % 3 == 0) {
-			cout << 0 << '\n';
-		}
-		else if (sum % 3 == 2) {
-			cout << 1 << '\n';
-		}
-		else {
-			bool check = true;
-			for (int i = 0; i < n; i++) {
-				if ((sum - a[i]) % 3 == 0) {
-					cout << 1 << '\n';
-					check = false;
-					break;
-				}
-			}
-			if (check == true) {
-				cout << 2 << '\n';
-			}
-		}
-	}
-
-	return 0;
+    int t;
+    std::cin >> t;
+    while (t--) {
+        solve();
+    }
+    return 0;
 }
+

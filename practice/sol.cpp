@@ -8,21 +8,26 @@ int main() {
 	while (t--) {
 		int n;
 		cin >> n;
-		vector<int> arr(n);
-		for (int i = 0; i < n; i++) {
-			cin >> arr[i];
-			arr[i]--;
+		string s;
+		cin >> s;
+
+		set<char> new_s;
+		for (int i = 0; i < s.size(); i++) {
+			new_s.insert(s[i]);
+		}
+		string tmp = "";
+		for (auto &c: new_s) {
+			tmp += c;
 		}
 
-		int ans = 3;
-		for (int i = 0; i < arr.size() - 1; i++) {
-			if ((arr[i] == i + 1) && (arr[i + 1] == i)) {
-				ans = 2;
-				break;
-			}
+		string a;
+		for (int i = 0; i < s.size(); i++) {
+			a += tmp[tmp.size() - 1 - tmp.find(s[i])];
 		}
-		cout << ans << '\n';
+		cout << a << '\n';
 	}
-	return 0;
-}
 
+	return 0;
+
+}
+		
