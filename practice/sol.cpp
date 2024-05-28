@@ -6,28 +6,9 @@ int main() {
 	int t;
 	cin >> t;
 	while (t--) {
-		int n;
-		cin >> n;
-		string s;
-		cin >> s;
-
-		set<char> new_s;
-		for (int i = 0; i < s.size(); i++) {
-			new_s.insert(s[i]);
-		}
-		string tmp = "";
-		for (auto &c: new_s) {
-			tmp += c;
-		}
-
-		string a;
-		for (int i = 0; i < s.size(); i++) {
-			a += tmp[tmp.size() - 1 - tmp.find(s[i])];
-		}
-		cout << a << '\n';
+		int x, y;
+		cin >> x >> y;
+		cout << max((y + 1) / 2, (x + 4 * y + 14) / 15) << '\n';
 	}
-
 	return 0;
-
 }
-		
