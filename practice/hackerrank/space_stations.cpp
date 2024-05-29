@@ -10,20 +10,26 @@ int main() {
 		cin >> b[i];
 	}
 	vector<int> a;
-	for (int i = 1; i <= n; i++) {
+	for (int i = 0; i < n; i++) {
 		a.push_back(i);
 	}
+	sort(b.begin(), b.end());
+	int max_dist = 0;
+	for (int i = 0; i < n; i++) {
+		auto lower = lower_bound(b.begin(), b.end(), i);
+		
+		int dist = INT_MAX;
 
-	auto Max = [&](vector<int> &b; int x) {
-		int i = 0;
-		int j = b.size() - 1;
-		while (i < j) {
-			int mid = i + (j - i) / 2;
-			if (b[mid] == x) {
-				return x;
-			}
+		if (lower != b.end()) {
+			dist = min(dist, abs(i - *lower));
 		}
+		if (lower != b.begin()) {
+			dist = min(dist, abs(i - *(lower - 1)));
+		}
+		
+		max_dist = max(max_dist, dist);
 	}
-
+	cout << max_dist << '\n';
+		
 	return 0;
 }
