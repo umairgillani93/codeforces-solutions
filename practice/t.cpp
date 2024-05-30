@@ -3,33 +3,35 @@
 using namespace std;
 
 int main() {
-	int n;
-	cin >> n;
-	vector<int> b(n);
-	for (int i = 0; i < n; i++) {
-		cin >> b[i];
-	}
-	for (int i = 0; i < n; i++) {
-		if (i % 2 == 0) {
-			b[i] = -1 * b[i];
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        vector<int> a(n);
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+        sort(a.begin(), a.end());
+		if (a[0] != a[1]) {
+			cout << "YES" << '\n';
+		}
+		else {
+			bool check = false;
+			for (int i = 1; i < n; i++) {
+				if (a[i] % a[0] != 0) {
+					check = true;
+				}
+			}
+			if (check == true) {
+				cout << "YES" << '\n';
+			}
+			else {
+				cout << "NO" << '\n';
+			}
+			
 		}
 	}
-	auto Prefix = [&](vector<int> &b) {
-		int n = b.size();
-		vector<long long> pref(n);
-		if (n == 0) return pref;
-		
-		pref[0] = b[0];
-		for (int i = 1; i < n; i++) {
-			pref[i] = pref[i - 1] + b[i];
-		}
-		return pref;
-	};
-	auto P = Prefix(b);
-	for (int i = 0; i < P.size(); i++) {
-		cout << P[i] << " ";
-	}
-	cout << '\n';
 	return 0;
-	
 }
+
