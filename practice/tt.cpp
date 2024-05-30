@@ -9,7 +9,8 @@ int main() {
 	for (int i = 0; i < arr.size(); i++) {
 		curr_sum = max(curr_sum + arr[i], arr[i]);
 		best_sum = max(curr_sum, best_sum);
+		cout << curr_sum << '\n';
 	}
-	cout << best_sum << '\n';
+	// cout << best_sum << '\n';
 	return 0;
 }
