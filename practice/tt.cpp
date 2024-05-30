@@ -3,94 +3,13 @@
 using namespace std;
 
 int main() {
-    int t;
-    cin >> t;
-    while (t--) {
-        int a, b, c;
-        cin >> a >> b >> c;
-        long long t = 0;
-
-        if (a > 0 && b == 0 && c == 0) {
-            t += a;
-            cout << t << '\n';
-            continue;
-        }
-        
-        if (a == 0 && b == 0 && c == 0) {
-            cout << 0 << '\n';
-            continue;
-        }
-        
-        if (a == 0 && b > 0 && c == 0) {
-            if (b >= 3) {
-                t = (b % 3 == 0) ? b / 3 : -1;
-            } else {
-                t = -1;
-            }
-            cout << t << '\n';
-            continue;
-        }
-        
-        if (a == 0 && b == 0 && c > 0) {
-            if (c >= 3) {
-                t = (c / 3) + (c % 3 == 0 ? 0 : 1);
-            } else {
-                t++;
-            }
-            cout << t << '\n';
-            continue;
-        }
-
-        t += a;
-        if (b >= 3) {
-            int q = b / 3;
-            t += q;
-            int r = b % 3;
-            if (r > 0) {
-                t++;
-                if (r == 1) {
-                    c -= 2;
-                } else if (r == 2) {
-                    c--;
-                }
-            }
-            if (c < 0) {
-                cout << -1 << '\n';
-                continue;
-            } else {
-                if (c >= 3) {
-                    t += c / 3;
-                    if (c % 3 > 0) {
-                        t++;
-                    }
-                } else {
-                    t += (c > 0) ? 1 : 0;
-                }
-            }
-        } else {
-            t++;
-            if (b == 1) {
-                c -= 2;
-            } else if (b == 2) {
-                c--;
-            }
-
-            if (c < 0) {
-                cout << -1 << '\n';
-                continue;
-            } else {
-                if (c >= 3) {
-                    t += c / 3;
-                    if (c % 3 > 0) {
-                        t++;
-                    }
-                } else {
-                    t += (c > 0) ? 1 : 0;
-                }
-            }
-        }
-        cout << t << '\n';
-    }
-    return 0;
+	vector<int> arr = {1,2,3,4,-4,5,-6,0,1};
+	int curr_sum = 0;
+	int best_sum = 0;
+	for (int i = 0; i < arr.size(); i++) {
+		curr_sum = max(curr_sum + arr[i], arr[i]);
+		best_sum = max(curr_sum, best_sum);
+	}
+	cout << best_sum << '\n';
+	return 0;
 }
-
