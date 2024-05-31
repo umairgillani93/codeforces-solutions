@@ -6,9 +6,23 @@ int main() {
 	int t;
 	cin >> t;
 	while (t--) {
-		int x, y;
-		cin >> x >> y;
-		cout << max((y + 1) / 2, (x + 4 * y + 14) / 15) << '\n';
+		int n, k;
+		cin >> n >> k;
+		vector<int> a(n);
+		for (int i = 0; i < n; i++) {
+			cin >> a[i];
+		}
+		bool found = false;
+		for (int i = 0; i < n; i++) {
+			if (a[i] == k) {
+				cout << "YES" << '\n';
+				found = true;
+				break;
+			}
+		}
+		if (found == false) {
+			cout << "NO" << '\n';
+		}
 	}
 	return 0;
 }
