@@ -6,23 +6,14 @@ int main() {
 	int t;
 	cin >> t;
 	while (t--) {
-		int n, k;
-		cin >> n >> k;
-		vector<int> a(n);
+		int n;
+		cin >> n;
+		int st = 9;
+		vector<int> a;
 		for (int i = 0; i < n; i++) {
-			cin >> a[i];
+			cout << st + i << " ";
 		}
-		bool found = false;
-		for (int i = 0; i < n; i++) {
-			if (a[i] == k) {
-				cout << "YES" << '\n';
-				found = true;
-				break;
-			}
-		}
-		if (found == false) {
-			cout << "NO" << '\n';
-		}
+		cout << '\n';
 	}
 	return 0;
 }

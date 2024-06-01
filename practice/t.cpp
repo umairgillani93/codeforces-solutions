@@ -3,22 +3,37 @@
 using namespace std;
 
 int main() {
-	int t;
-	cin >> t;
-	while (t--) {
-		int n;
-		cin >> n;
-		vector<int> a(n);
-		for (int i = 0; i < n; i++) {
-			cin >> a[i];
-		}
-		bool ok = false;
-		for (int i = 0; i < n; i++) {
-			ok |= is_sorted(a.begin(), a.end());
-			rotate(a.begin(), a.begin() + 1, a.end());
-		}
-		cout << (ok ? "YES" : "NO") << '\n';
-	}
-	return 0;
+    int t;
+    cin >> t;
+    while (t--) {
+        int n, k, s;
+        cin >> n >> k >> s;
+
+        vector<int> arr(n);
+        iota(arr.begin(), arr.end(), 1);  // Fill the vector with 1, 2, ..., n
+        
+        int t = 0; 
+        int N = 0;
+        bool check = false;
+        
+        for (int i = arr.size() - 1; i >= 0; i--) {
+            t += arr[i];
+            N++;
+            
+            if (t > s) {
+                t -= arr[i];
+                N--;
+            } else if (t == s && N == k) {
+                cout << "YES" << '\n';
+                check = true;
+                break;
+            }
+        }
+        
+        if (!check) {
+            cout << "NO" << '\n';
+        }
+    }
+    return 0;
 }
 
