@@ -1,26 +1,23 @@
-#include <iostream>
+#include <bits/stdc++.h>
 
-uint64_t modPow(uint64_t base, uint64_t exponent) {
-    uint64_t result = 1;
-    base %= 100; // Reduce base to last 2 digits
-
-    while (exponent > 0) {
-        if (exponent & 1) {
-            result = (result * base) % 100; // Multiply and reduce
-        }
-        exponent >>= 1;
-        base = (base * base) % 100; // Square and reduce
-    }
-
-    return result;
-}
+using namespace std;
 
 int main() {
-    uint64_t n = 2; /* your large value of n */
-    int lastTwoDigits = modPow(5, n) % 100; // Compute the last 2 digits
-
-    std::cout << "Last 2 digits: " << lastTwoDigits << std::endl;
-
-    return 0;
+	long long n;
+	cin >> n;
+	auto Check = [&](int base, long long exp) {
+		base %= 100;
+		long long res = 1;
+		while (exp > 0) {
+			if (exp & 1) {
+				res = (res * base) % 100;
+			}
+			exp >>= 1;
+			base = (base * base) % 100;
+		}
+		return res;
+	};
+	auto c = Check(5, n);
+	cout << c << '\n';
+	return 0;
 }
-
