@@ -5,7 +5,7 @@ using namespace std;
 int main() {
 	long long n;
 	cin >> n;
-	auto Check = [&](int base, long long exp) {
+	auto check = [&](int base, long long exp) {
 		base %= 100;
 		long long res = 1;
 		while (exp > 0) {
@@ -17,7 +17,7 @@ int main() {
 		}
 		return res;
 	};
-	auto c = Check(5, n);
+	auto c = check(5, n);
 	cout << c << '\n';
 	return 0;
 }
