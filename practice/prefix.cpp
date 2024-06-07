@@ -5,16 +5,22 @@ using namespace std;
 int main() {
 	int n;
 	cin >> n;
-	vector<int> arr(n);
+	vector<int> a(n);
 	for (int i = 0; i < n; i++) {
-		cin >> arr[i];
+		cin >> a[i];
 	}
-	vector<int> pref_sum;
-	for (int i = 1; i <= arr.size(); i++) {
-		pref_sum.push_back(i * (i + 1) / 2);
-	}
-	for (auto &c: pref_sum) {
-		cout << c << " ";
+	auto Pref = [&](vector<int> &arr) {
+		int n = arr.size();
+		vector<int> p(n, 0);
+		p[0] = arr[0];
+		for (int i = 0; i < n; i++) {
+			p[i] = p[i - 1] + a[i];
+		}	
+		return p;
+	};
+	auto pref = Pref(a);
+	for (auto &c: pref) {
+		cout << c << " " ;
 	}
 	cout << '\n';
 	return 0;

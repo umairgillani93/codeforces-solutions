@@ -9,7 +9,6 @@ int main() {
 	for (int i = 0; i < n; i++) {
 		cin >> a[i];
 	}
-	sort(a.begin(), a.end());
 	auto Prefix = [&](vector<int> &arr) {
 		vector<int> pref(arr.size(), 0);
 		pref[0] = arr[0];
@@ -18,7 +17,25 @@ int main() {
 		}
 		return pref;
 	};
-	auto p = Prefix(a);
+	int i = 0; 
+	int j = n - 1;
+	while (k > 0) {
+		if (a[i] + a[i + 1] < a[n - 1]) {
+			i += 2;
+			k--;
+		}
+		else {
+			j--;
+			k--;
+		}
+	}
+	long long sum = 0;
+	auto pref = Prefix(a);
+	cout << "i is: " << i << " " << "j is: " << j << '\n';
+	for (int i = i; i <= j; i++) {
+		sum += pref[i];
+	}
+	cout << sum << '\n';
 	return 0;
-}
 
+}

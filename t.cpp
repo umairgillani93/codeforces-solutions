@@ -3,61 +3,29 @@
 using namespace std;
 
 int main() {
-	int t;
-	cin >> t;
-	while (t--) {
-	string s;
-	cin >> s;
-	/* imaging our string is "101011"
-	 * check out each element of the list
-	 * if it's first '0' insert it at the front of first '1'
-	 * in above case -> 011011 -> 001111 -> total cost becomes 
-	 * 2 - 1 + 1 = 2
-	 */
-	/*
-	 * go throught the string
-	 * check if s[0] == '0'
-	 * go through the chunk of string 0...i
-	 * check if there's any '1' in it s[j] == 1
-	 * 11000 -> first zero 
-	 * 
-	 */
-	int ans = 0;
-	bool done = false;
-	int c = count(s.begin(), s.end(), '0');
-	while (!done) {
-	for (int i = 0; i < s.size(); i++) {
-		if (s[i] == '0') {
-			for (int j = 0; j < i; j++) {
-				if (s[j] == '1') {
-					ans += i - j + 1;
-					s.erase(i, 1);
-					if (j == 0) {
-						s.insert(0, 1, '0');
-					}
-					else {
-						s.insert(j, 1, '0');
-					}
-					break;
-				}
-					
-				}
-			}
-		}
-		bool check = false;
-		for (int i = 0; i < c; i++) {
-			if (s[i] != '0') {
-				check = true;
-				break;
-			}
-			else {continue;};
-		}
-		if (!check) {
-			done = true;
-			cout << ans << '\n';
-		}
-	}
-	}
-
-	return 0;
+    int n, k;
+    cin >> n >> k;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    sort(a.begin(), a.end());
+    int minus = 0;
+    int i = 0;
+    while (i < k) {
+        if (n > 1 && a[0] + a[1] < a[n - 1]) {
+            minus += (a[0] + a[1]);
+            a.erase(a.begin(), a.begin() + 2); // Remove the first two elements
+            n -= 2;
+        } else {
+            minus += a[n - 1];
+            a.pop_back(); // Remove the last element
+            n--;
+        }
+        i++;
+    }
+    long long res = accumulate(a.begin(), a.end(), 0LL);
+    cout << res - minus << '\n';
+    return 0;
 }
+
