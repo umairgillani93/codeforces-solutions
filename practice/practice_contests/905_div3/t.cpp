@@ -3,14 +3,19 @@
 using namespace std;
 
 int main() {
-	vector<int> arr = {7, 12};
-	sort(arr.begin(), arr.end());
+	vector<int> arr = {5,10};
+	int k = 4;
 	int min_diff = INT_MAX;
 	for (int i = 0; i < arr.size(); i++) {
-		int curr_diff = abs(4 - arr[i] % 4);
-		min_diff = min(min_diff, curr_diff);
+		if (arr[i] % 2 == 0) {
+			continue;
+		}
+		else {
+			int res = ceil(arr[i] / 4.0) * 4;
+			int diff = res - arr[i];
+			min_diff = min(min_diff, diff);
+		}
 	}
 	cout << min_diff << '\n';
 	return 0;
-
 }
