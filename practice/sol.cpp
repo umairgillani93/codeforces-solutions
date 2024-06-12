@@ -3,22 +3,30 @@
 using namespace std;
 
 int main() {
-	int n, k;
-	cin >> n >> k;
-	vector<int> a(n);
-	for (int i = 0; i < n; i++) {
-		cin >> a[i];
-	}
-	sort(a.begin(), a.end());
-	auto Prefix = [&](vector<int> &arr) {
-		vector<int> pref(arr.size(), 0);
-		pref[0] = arr[0];
-		for (int i = 1; i < n; i++) {
-			pref[i] = pref[i - 1] + arr[i];
+	ios_base::sync_with_stdio(false);
+	cin.tie(0);
+	int t;
+	cin >> t;
+	while (t--) {
+		long long n;
+		cin >> n;
+		n = n - n  % 10 + (n % 10 + 1) % 10;
+		bool chk = false;
+		while (n > 9) {
+			if (n % 10 == 0) {
+				cout << "NO" << '\n';
+				chk = true;
+				break;
+				
+			}
+			else {
+				n /= 10;
+			}
 		}
-		return pref;
-	};
-	auto p = Prefix(a);
+		if (chk == false) {
+			cout << (n == 1 ? "YES" : "NO") << '\n';
+		}
+	}
 	return 0;
 }
 
