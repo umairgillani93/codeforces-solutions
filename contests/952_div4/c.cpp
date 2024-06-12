@@ -5,15 +5,6 @@ using namespace std;
 int main() {
 	int t;
 	cin >> t;
-	auto Prefix = [&](vector<int> &arr) {
-		int n = arr.size();
-		vector<int> p(n, 0);
-		p[0] = arr[0];
-		for (int i = 1; i < n; i++) {
-			p[i] = p[i - 1] + arr[i];
-		}
-		return p;
-	};
 	while (t--) {
 		int n;
 		cin >> n;
@@ -21,16 +12,18 @@ int main() {
 		for (int i = 0; i < n; i++) {
 			cin >> a[i];
 		}
-		sort(a.begin(), a.end());
-		auto p = Prefix(a);
-		int cnt = 0;
-		for (int i = 0; i < n - 1; i++) {
-			if (a[i + 1] == p[i]) {
-				cnt++;
+		int ans = 0;
+		int mx = -1;
+		long long sum = 0;
+		for (int i = 0; i < n; i++) {
+			mx = max(mx, a[i]);
+			sum += a[i];
+			if (2 * mx == sum) {
+				ans++;
 			}
 		}
-		cout << cnt << '\n';
-	}	
-
+		cout << ans << '\n';
+	}
 	return 0;
 }
+

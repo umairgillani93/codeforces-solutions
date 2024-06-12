@@ -1,32 +1,32 @@
-#include <bits/stdc++.h>
-
+#include <iostream>
 using namespace std;
 
+// Function to find the number of trailing zeros in binary representation
+int countTrailingZeros(long long n) {
+    int count = 0;
+    while ((n & 1) == 0) {
+        n >>= 1;
+        count++;
+    }
+    return count;
+}
+
+void solve() {
+    long long x, y;
+    cin >> x >> y;          // Read input values x and y
+    long long z = x ^ y;    // Compute x XOR y
+    int k = countTrailingZeros(z); // Find the number of trailing zeros in z
+    cout << (1LL << k) << '\n'; // Output 2^k
+}
+
 int main() {
-	ios_base::sync_with_stdio(false);
-	cin.tie(0);
-	int t;
-	cin >> t;
-	while (t--) {
-		long long n;
-		cin >> n;
-		n = n - n  % 10 + (n % 10 + 1) % 10;
-		bool chk = false;
-		while (n > 9) {
-			if (n % 10 == 0) {
-				cout << "NO" << '\n';
-				chk = true;
-				break;
-				
-			}
-			else {
-				n /= 10;
-			}
-		}
-		if (chk == false) {
-			cout << (n == 1 ? "YES" : "NO") << '\n';
-		}
-	}
-	return 0;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t;
+    cin >> t; // Read the number of test cases
+    while (t--) {
+        solve(); // Solve each test case
+    }
+    return 0;
 }
 
