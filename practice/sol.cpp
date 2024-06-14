@@ -1,31 +1,33 @@
 #include <iostream>
+#include <vector>
+#include <string>
 using namespace std;
 
-// Function to find the number of trailing zeros in binary representation
-int countTrailingZeros(long long n) {
-    int count = 0;
-    while ((n & 1) == 0) {
-        n >>= 1;
-        count++;
+void solve(int x) {
+    vector<int> a;
+    while (x > 0) {
+        if (x & 1) {
+            a.push_back(1);
+        } else {
+            a.push_back(0);
+        }
+        x >>= 1;
     }
-    return count;
-}
-
-void solve() {
-    long long x, y;
-    cin >> x >> y;          // Read input values x and y
-    long long z = x ^ y;    // Compute x XOR y
-    int k = countTrailingZeros(z); // Find the number of trailing zeros in z
-    cout << (1LL << k) << '\n'; // Output 2^k
+    int n = a.size();
+    cout << n << endl;
+    for (int i = 0; i < n; ++i) {
+        cout << a[i] << " ";
+    }
+    cout << endl;
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
     int t;
-    cin >> t; // Read the number of test cases
+    cin >> t;
     while (t--) {
-        solve(); // Solve each test case
+        int x;
+        cin >> x;
+        solve(x);
     }
     return 0;
 }
