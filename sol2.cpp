@@ -1,39 +1,30 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
-
+ 
 int main() {
     int t;
     cin >> t;
     while (t--) {
-        int n;
-        cin >> n;
+        int n, m, k;
+        cin >> n >> m >> k;
         string s;
         cin >> s;
-        
-        // Frequency array to store occurrences of each character
-        vector<int> occ(26, 0);
-        for (char c : s) {
-            occ[c - 'a']++;
-        }
-        
-        // Find the character with the lowest and highest frequency
-        int lowIdx = 0, highIdx = 0;
-        for (int i = 1; i < 26; i++) {
-            if (occ[i] < occ[lowIdx]) lowIdx = i;
-            if (occ[i] > occ[highIdx]) highIdx = i;
-        }
-
-        // Replace the character with the lowest frequency with the highest frequency character
-        for (int i = 0; i < n; i++) {
-            if (s[i] == 'a' + lowIdx) {
-                s[i] = 'a' + highIdx;
+ 
+        int ans = 0;
+        for (int i = 0; i <= n - m; i++) {
+            bool ok = true;
+            for (int j = i; j < i + m; j++) {
+                if (s[j] != '0') {
+                    ok = false;
+                    break;
+                }
+            }
+            if (ok) {
+                ans++;
+                i += (m + k - 2);
             }
         }
-
-        cout << s << "\n";
+        cout << ans << endl;
     }
     return 0;
 }
-
