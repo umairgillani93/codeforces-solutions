@@ -5,23 +5,23 @@ using namespace std;
 
 bool f(vector<int> &arr, int x) {
 	set<int> st;
-	int sum = 0;
+	int s = 0;
 
 	int n = arr.size();
 
 	for (int i = 0; i < n; i++) {
-		sum += arr[i];
+		
+		s += arr[i];
 
-
-		if (sum == x) {
+		if (x - s == 0) {
 			return true;
 		}
 
-		if (st.find(sum - x) != st.end()) {
+		if (st.find(s - x) != st.end()) {
 			return true;
 		}
 
-		st.insert(sum);
+		st.insert(s);
 	}
 	return false;
 }
@@ -33,11 +33,8 @@ int main() {
 	for (int i = 0; i < n; i++) {
 		cin >> a[i];
 	}
-
 	bool res = f(a, x);
 	cout << res << '\n';
 	return 0;
-
 }
-
 
