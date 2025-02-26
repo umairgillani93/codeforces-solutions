@@ -1,0 +1,76 @@
+Intermediate Level:
+Count subarrays with a given sum
+
+Given an array and an integer 
+𝑆
+S, count the number of subarrays that sum up to 
+𝑆
+S.
+Maximum sum subarray of length 
+𝑘
+k
+
+Given an array and an integer 
+𝑘
+k, find the maximum sum of any subarray of size 
+𝑘
+k.
+Find the smallest subarray with sum ≥ 
+𝑆
+S
+
+Given an array and an integer 
+𝑆
+S, find the smallest contiguous subarray whose sum is at least 
+𝑆
+S.
+Number of subarrays with an even sum
+
+Count the number of subarrays that have an even sum.
+Range update using difference array
+
+Given an array, process multiple queries that increase all elements in a given range 
+[
+𝐿
+,
+𝑅
+]
+[L,R] by some value 
+𝑥
+x.
+Advanced Level:
+Find the longest subarray with sum 
+𝐾
+K
+
+Given an array, find the length of the longest subarray with sum exactly equal to 
+𝐾
+K.
+Number of subarrays with sum divisible by 
+𝐾
+K
+
+Given an array, count the number of subarrays whose sum is divisible by 
+𝐾
+K.
+Count subarrays with at most 
+𝐾
+K distinct elements
+
+Given an array and 
+𝐾
+K, count the number of subarrays with at most 
+𝐾
+K distinct elements.
+Minimum operations to make an array prefix sum non-decreasing
+
+You are allowed to increase elements in the array. Find the minimum number of operations to make its prefix sum non-decreasing.
+2D Prefix Sum (Submatrix Sum Queries)
+
+Given a matrix, efficiently compute the sum of elements inside a submatrix defined by two given corners.
+Find the number of ways to split an array into 3 parts with equal sum
+
+Given an array, count the ways to partition it into 3 contiguous subarrays of equal sum.
+Binary Array - Minimum flips to make prefix sum alternating
+
+Given a binary array, find the minimum number of flips needed to make the prefix sum alternate between 0 and 1.
