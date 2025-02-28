@@ -23,7 +23,7 @@ int main() {
 			}
 			i++;
 		}
-		ans += (j - 1 + 1);
+		ans += (j - i + 1);
 	}
 	cout << ans << '\n';
 	return 0;
