@@ -1,0 +1,60 @@
+Beginner Level (Fixed-Size Sliding Window)
+Maximum Sum Subarray of Size K
+Find the maximum sum of any contiguous subarray of size K.
+Variation: Find the minimum sum subarray of size K.
+
+First Negative Number in Every Window of Size K
+Given an array with positive and negative numbers, find the first negative number in each window of size K.
+Variation: Replace missing negatives with 0 if no negative exists in a window.
+
+Count Occurrences of Anagram (Permutation in a String)
+Find all occurrences of an anagram of s1 in s2 using a fixed sliding window.
+
+🔄 Intermediate Level (Variable-Size Sliding Window)
+Longest Substring Without Repeating Characters
+Find the length of the longest substring with unique characters.
+Variation: Find the actual substring, not just its length.
+
+Longest Substring with At Most K Distinct Characters
+Given a string, find the length of the longest substring containing at most K distinct characters.
+
+Smallest Subarray with Sum ≥ X
+Find the smallest contiguous subarray whose sum is at least X.
+Variation: Find the largest subarray with sum at most X.
+
+Fruits into Baskets (Sliding Window with Two Pointers)
+Find the longest contiguous subarray where you can pick at most two different types of fruits.
+Hint: This is a variable-size window problem, equivalent to "Longest Subarray with At Most 2 Distinct Characters."
+
+🚀 Advanced Level (Optimized Sliding Window & Two Pointers)
+Minimum Window Substring
+Find the smallest substring in s that contains all characters of t.
+Hint: Use two pointers and frequency maps.
+
+Longest Subarray with Equal Number of 0s and 1s
+Given a binary array, find the longest contiguous subarray with an equal number of 0s and 1s.
+Variation: Instead of 0s and 1s, use any two given numbers.
+
+Sliding Window Median
+Find the median of each window of size K in an array.
+Hint: Use a balanced data structure like a multiset or two heaps (max heap + min heap).
+
+Longest Subarray with Sum Divisible by K
+Find the longest contiguous subarray whose sum is divisible by K.
+
+Find K Unique Characters with the Most Frequency
+Find the K most frequent unique characters in a string within a sliding window.
+Hint: Use frequency maps + sliding window.
+
+Max Consecutive Ones III
+Find the longest contiguous subarray with at most K zeroes that can be flipped to 1.
+Hint: Use the two-pointer approach.
+
+🏆 Final Step: Implement & Master
+Try solving these problems on:
+
+LeetCode: Search for problems under "Sliding Window" tag.
+Codeforces: Look for problems involving substrings, subarrays, and constraints like "at most K" or "minimum sum."
+AtCoder: Look for range query problems.
+💡 Bonus:
+Once you're comfortable, try implementing monotonic queues or deque-based optimizations for sliding window maximum/minimum problems.
