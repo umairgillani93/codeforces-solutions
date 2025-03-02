@@ -3,9 +3,17 @@
 using namespace std;
 
 int main() {
-	unordered_map<int, int> freq;
-	cout << freq.size() << '\n';
-	cout << '\n';
-	cout << freq.count(0) << '\n';
+	vector<int> arr = {2, 7, 11, 15};
+	int x = 9;
+	set<int> pref;
+	int n = arr.size();
+	int sum = 0;
+	for (int i = 0; i < n; i++) {
+		sum += a[i];
+		if (pref.find(sum - x) != pref.end()) {
+			cout << "yes"
+		}
+	}
+		
 	return 0;
 }
