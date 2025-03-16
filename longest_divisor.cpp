@@ -8,8 +8,10 @@ int main() {
 		long long n;
 		cin >> n;
 		int ans = 1;
-		while (n % (ans + 1) == 0) {
+		int count = 2;
+		while (n % count == 0) {
 			ans++;
+			count++;
 		}
 		cout << ans << '\n';
 	}
