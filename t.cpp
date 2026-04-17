@@ -1,56 +1,29 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 int main() {
-	// maximum distinct items bounds
-	int t;
-	cin >> t;
-	while (t--) {
-		int n;
-		cin >> n;
-		vector<int> a(n);
-		for (int i = 0; i < n; i++) {
-			cin >> a[i];
+	vector<int> a = {2, 1, 3, 2};
+
+	int curr = 1;
+	int best = 0;
+	int start = 0;
+	int end = 0;
+	int l = 0;
+	for (int r = 1; r < a.size(); r++) {
+		if (a[r] == a[r - 1]) {
+			curr++;
 		}
-
-		auto Check = [&](vector<int> &arr) {
-			for (int i = 0; i < n - 1; i++) {
-				if (arr[i] != arr[i + 1]) {
-					return false;
-				}
-			}
-			return true;
-		};
-
-		if (Check(a) && n > 1) {
-			cout << 0 << '\n';
-			continue;
+		else {
+			curr = 1;
+			l = r;
+		}	
+		if (curr > best) {
+			best = curr;
+			start = l;
+			end = r;
 		}
-
-		if (n == 1) {
-			cout << 1 << " " << 1 << '\n';
-			continue;
-		}
-		int max_i, max_j = 0;
-		int curr = 1;
-		int l = 0;
-		int best = INT_MIN;
-		unordered_map<int, int> freq;
-		for (int r = 0; r < n; r++) {
-			freq[a[r]]++;
-			while (freq[a[r]] > 1) {
-				freq[a[l]]--;
-				l++;
-			}
-
-			if (r - l + 1 > max_j - max_i + 1) {
-				max_j = r;
-				max_i = l + 1;
-			}
-
-		}
-		cout << max_i << " " << max_j << '\n';
 	}
-
+	cout << start << " " << end << '\n';
 	return 0;
 }

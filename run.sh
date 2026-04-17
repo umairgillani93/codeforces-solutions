@@ -1,1 +1,1 @@
-g++ sol.cpp && ./a.out
+g++ sol.cpp && ./a.out < in
