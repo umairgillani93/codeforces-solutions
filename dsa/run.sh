@@ -1,1 +1,1 @@
-gcc test.c && ./a.out
+gcc grid_traversal.c && ./a.out
