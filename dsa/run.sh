@@ -1,1 +1,1 @@
-gcc grid_traversal.c && ./a.out
+gcc chunks.c && ./a.out
