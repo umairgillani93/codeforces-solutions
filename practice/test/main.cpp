@@ -8,20 +8,42 @@ int main() {
 	for (int i = 0; i < n; i++) {
 		cin >> a[i];
 	}
+
+	//vector<int> pref(n, 0);
+	//pref[0] = a[0];
+	//for (int i = 0; i < n; i++) {
+	//	pref[i] = pref[i-1] + a[i];
+	//}
+
+	//int curr = 0, best = 0;
+	//for (int i = 0; i < n; i++) {
+	//	for (int j = i; j < n; j++) {
+	//		if (pref[j] - pref[i - 1] == k) {
+	//			curr = j - (i - 1);
+	//			best = max(best, curr); 
+	//		} 
+	//	} 
+	//} 
+	//cout << best << '\n';
+
+	/*
+	 * max(pref[j] - pref[i-1] == k)
+	 */
 	
 	unordered_map<int, int> freq;
-	int curr = 0, count = 0;
-	freq[0] = 1; // before we start prefix sum = 0
-	
+
+	int count = 0, curr = 0;
+	freq[0] = 1;
 	for (int i = 0; i < n; i++) {
-		// returns number of subarrays having sum divisible by 'k'
 		curr += a[i];
 		if (freq.count(curr - k)) {
-			printf("true\n");
-			return 0;
+			// somhow take the len like len = j - i;
+			freq[len]++;
 		}
-		freq[curr]++;
 	}
+	// fianally take the max of lenths added
+	// int ans = max(freq);
+	// cout << ans << '\n';
 	
 	return -1;
 }
