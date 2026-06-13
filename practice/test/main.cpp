@@ -9,15 +9,15 @@ int main() {
 	unordered_map<char, int> freq;
 	int curr = 0, best = 0;
 	int i = 0;
-	for (int j = 0; j < n; j++) {
+	for (int j = 1; j < n; j++) {
 		freq[s[j]]++;
 		while (freq[s[j]] > 1) {
-			freq[s[i]]--;
+			freq[s[j]]--;
 			i++;
 		}
-		best = max(best, j - i + 1);
+		curr = j - i;
+		best = max(best, curr);
 	}
-
 
 	cout << best << '\n';
 	return 0;
