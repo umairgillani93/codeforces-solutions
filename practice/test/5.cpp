@@ -16,12 +16,12 @@ int main() {
 	for (int i = 0; i < n; i++) {
 		// returns number of subarrays having sum divisible by 'k'
 		curr += a[i];
-		if (freq.count(curr - k)) {
-			printf("true\n");
-			return 0;
+		if (freq.count(curr % k)) {
+			count += freq[curr % k];
 		}
-		freq[curr]++;
+		freq[curr % k]++;
 	}
+	cout << count << '\n';
 	
-	return -1;
+	return 0;
 }
