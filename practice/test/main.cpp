@@ -1,22 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+vector<int> getRemovableIndices(string str1, string str2) {
+    vector<int> res;
+    string actual = str1;
+    for (int i = 0; i < str1.length(); i++) {
+					str1.erase(str1.begin() + i);
+					cout << "removal index: " << i << str1 << " " << str2 << '\n';
+					if (str1 == str2) res.push_back(i);
+					str1 = actual;
+    }
+    return res;
+}
+
 int main() {
-	int x1, v1, x2, v2;
-	cin >> x1 >> v1 >> x2 >> v2;
+	string str1 = "aabbb";
+	string str2 = "aabb";
+	vector<int> ans = getRemovableIndices(str1, str2);
+	for (auto &s: ans) cout << s << '\n';
+	return 0;
 
-	/*
-	 * (x1 + v1) % (x2 + v2) == 0 -> yes
-	 * x1 + nv1  = x2 + nv2
-	 * x1 - x2 = nv2 - nv1
-	 * x1 - x2 = n(v2 - v1)
-	 * (x1 - x2) / (v2 - v1) = n
-	 * if (x1 - x2) / (v2 - v1) >= 0 && (x1 - x2) % (x2 - x1) == 0 -> yes 
-	 * else No
-	 */
-
-	if ((x2 - x1) / (v1 - v2) >= 0 && 
-			(x2 - x1) % (v1 - v2) == 0) return "YES";
-	return "NO";
-	
 }
