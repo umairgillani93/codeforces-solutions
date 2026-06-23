@@ -1,27 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 int main() {
-    int t;
-    cin >> t;
-    while (t--) {
-        int n;
-        cin >> n;
-        string s;
-        cin >> s;
+	// create an array that has length (n + 2)
+	// b[k] = 1; b[i] = 0;
+	// b[0] = 1, b[n + 1] = 1;
+	//
+	int t;
+	cin >> t;
+	while (t--) {
+		int n, k;
+		cin >> n >> k;
+		vector<int> arr(n + 2);
+		for (int i = 1; i <= n; i++) {
+			cin >> arr[i];
+		}
+		//cout << "n: " << n << " vector size: " << arr.size() << '\n';
+		int p;
+		cin >> p;
+		// create an array of size n + 2;
+		
+		arr[0] = arr[n + 1] = arr[p];
+			
+		int l = 0, r = 0;
+		for(int i = 0; i < p; i++) {
+			if (arr[i] != arr[i + 1]) l++;
+		}
 
-        int dist = 0;
-        int ans = 0;
-        int arr[26] = {0}; // FIX 1: Initialize all elements to 0
-
-        for (int i = 0; i < n; i++) {
-            // FIX 2: Check if seen for the FIRST time (value is 0)
-            if (arr[s[i] - 'a'] == 0) { 
-                dist++;         // Increment unique count
-                arr[s[i] - 'a'] = 1; // Mark as seen
-            }
-            ans += dist;
-        }
-        cout << ans << '\n'; // FIX 3: Output 'ans', not 'dist'
-    }
-    return 0;
+		for(int i = p; i < n + 1; i++) {
+			if (arr[i] != arr[i + 1]) r++;
+		}
+		cout << max(l, r) << '\n';
+	}
+	return 0;
 }
